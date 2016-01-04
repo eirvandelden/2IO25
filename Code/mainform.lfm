@@ -1,0 +1,319 @@
+object Form1: TForm1
+  Left = 687
+  Height = 675
+  Top = 120
+  Width = 884
+  ActiveControl = Panel1
+  Caption = 'CurveReconDriver'
+  ClientHeight = 675
+  ClientWidth = 884
+  OnCreate = FormCreate
+  LCLVersion = '0.9.26.2'
+  object Tekening: TPaintBox
+    Left = 0
+    Height = 675
+    Top = 0
+    Width = 675
+    Align = alClient
+    OnMouseDown = TekeningMouseDown
+    OnMouseMove = TekeningMouseMove
+    OnMouseUp = TekeningMouseUp
+    OnMouseLeave = TekeningMouseLeave
+    OnPaint = TekeningPaint
+  end
+  object Panel1: TPanel
+    Left = 675
+    Height = 675
+    Top = 0
+    Width = 209
+    Align = alRight
+    ClientHeight = 675
+    ClientWidth = 209
+    TabOrder = 0
+    object LabelOOR: TLabel
+      Left = 96
+      Height = 20
+      Top = 256
+      Width = 9
+      Caption = '*'
+      Font.Color = clRed
+      Font.Height = -21
+      Font.Name = 'Sans'
+      ParentColor = False
+      ParentFont = False
+      Visible = False
+    end
+    object LabelAantal: TLabel
+      Left = 11
+      Height = 18
+      Top = 528
+      Width = 52
+      Caption = '0 points'
+      ParentColor = False
+    end
+    object LabelRT: TLabel
+      Left = 11
+      Height = 18
+      Top = 552
+      Width = 92
+      Caption = 'Running time: '
+      ParentColor = False
+      Visible = False
+    end
+    object Label1: TLabel
+      Left = 8
+      Height = 18
+      Top = 8
+      Width = 52
+      Caption = 'Points:'
+      Font.Height = -18
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 8
+      Height = 18
+      Top = 152
+      Width = 48
+      Caption = 'Zoom:'
+      Font.Height = -18
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 8
+      Height = 18
+      Top = 304
+      Width = 86
+      Caption = 'Algorithms:'
+      Font.Height = -18
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 148
+      Height = 18
+      Top = 336
+      Width = 10
+      Caption = 'α'
+      ParentColor = False
+    end
+    object Label5: TLabel
+      Left = 8
+      Height = 18
+      Top = 504
+      Width = 73
+      Caption = 'Overview:'
+      Font.Height = -18
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 8
+      Height = 18
+      Top = 592
+      Width = 134
+      Caption = 'File Management:'
+      Font.Height = -18
+      Font.Name = 'Sans'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
+    end
+    object ButtonClear: TButton
+      Left = 61
+      Height = 23
+      Top = 104
+      Width = 84
+      Caption = 'Clear'
+      OnClick = ButtonClearClick
+      TabOrder = 3
+    end
+    object ButtonNN: TButton
+      Left = 8
+      Height = 23
+      Top = 360
+      Width = 192
+      Caption = 'Nearest Neighbor'
+      Default = True
+      OnClick = ButtonNNClick
+      TabOrder = 4
+    end
+    object ButtonVoegToe: TButton
+      Left = 8
+      Height = 23
+      Top = 64
+      Width = 84
+      Caption = 'Add'
+      OnClick = ButtonVoegToeClick
+      TabOrder = 2
+    end
+    object EditY: TEdit
+      Left = 52
+      Height = 22
+      Top = 40
+      Width = 40
+      TabOrder = 1
+      Text = '0'
+    end
+    object EditX: TEdit
+      Left = 8
+      Height = 22
+      Top = 40
+      Width = 40
+      TabOrder = 0
+      Text = '0'
+    end
+    object CheckBoxClosed: TCheckBox
+      Left = 8
+      Height = 20
+      Top = 336
+      Width = 106
+      Caption = 'Closed Curve'
+      Checked = True
+      State = cbChecked
+      TabOrder = 5
+    end
+    object EditRandom: TEdit
+      Left = 116
+      Height = 22
+      Top = 40
+      Width = 84
+      TabOrder = 6
+      Text = '10'
+    end
+    object ButtonRandom: TButton
+      Left = 116
+      Height = 23
+      Top = 64
+      Width = 84
+      Caption = 'Random'
+      OnClick = ButtonRandomClick
+      TabOrder = 7
+    end
+    object ButtonImport: TButton
+      Left = 13
+      Height = 23
+      Top = 624
+      Width = 84
+      Caption = 'Open...'
+      OnClick = ButtonImportClick
+      TabOrder = 8
+    end
+    object ButtonFit: TButton
+      Left = 8
+      Height = 23
+      Top = 256
+      Width = 84
+      Caption = 'Zoom Fit'
+      OnClick = ButtonFitClick
+      TabOrder = 9
+    end
+    object ButtonDNN: TButton
+      Left = 8
+      Height = 23
+      Top = 392
+      Width = 192
+      Caption = 'Directed Nearest Neighbor'
+      OnClick = ButtonDNNClick
+      TabOrder = 10
+    end
+    object ButtonUp: TButton
+      Left = 43
+      Height = 25
+      Top = 184
+      Width = 26
+      Caption = '^'
+      OnClick = ButtonUpClick
+      TabOrder = 11
+    end
+    object ButtonDown: TButton
+      Left = 43
+      Height = 25
+      Top = 213
+      Width = 26
+      Caption = 'v'
+      OnClick = ButtonDownClick
+      TabOrder = 12
+    end
+    object ButtonRight: TButton
+      Left = 80
+      Height = 25
+      Top = 213
+      Width = 25
+      Caption = '>'
+      OnClick = ButtonRightClick
+      TabOrder = 13
+    end
+    object ButtonLeft: TButton
+      Left = 8
+      Height = 25
+      Top = 213
+      Width = 25
+      Caption = '<'
+      OnClick = ButtonLeftClick
+      TabOrder = 14
+    end
+    object ButtonPlus: TButton
+      Left = 141
+      Height = 25
+      Top = 184
+      Width = 25
+      Caption = '+'
+      OnClick = ButtonPlusClick
+      TabOrder = 15
+    end
+    object ButtonMin: TButton
+      Left = 141
+      Height = 25
+      Top = 213
+      Width = 25
+      Caption = '-'
+      OnClick = ButtonMinClick
+      TabOrder = 16
+    end
+    object EditAlpha: TEdit
+      Left = 160
+      Height = 22
+      Top = 334
+      Width = 40
+      TabOrder = 17
+      Text = '1.1'
+    end
+    object ButtonUP25: TButton
+      Left = 8
+      Height = 23
+      Top = 456
+      Width = 192
+      Caption = 'Up To Five'
+      OnClick = ButtonUP25Click
+      TabOrder = 18
+    end
+    object ButtonINN: TButton
+      Left = 8
+      Height = 23
+      Top = 424
+      Width = 192
+      Caption = 'Improved Nearest Neighbor'
+      OnClick = ButtonINNClick
+      TabOrder = 19
+    end
+    object ButtonExport: TButton
+      Left = 116
+      Height = 23
+      Top = 624
+      Width = 75
+      Caption = 'Save...'
+      OnClick = ButtonExportClick
+      TabOrder = 20
+    end
+  end
+end

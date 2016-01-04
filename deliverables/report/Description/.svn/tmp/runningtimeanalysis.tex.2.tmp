@@ -1,0 +1,191 @@
+%
+%  untitled
+%
+%  Created by Etienne van Delden on 2009-11-23.
+%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%
+\documentclass[]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{latexsym}
+
+\usepackage{clrscode}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+\title{A LaTeX Article}
+\author{  }
+
+\date{2009-11-23}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\maketitle
+
+\section{Running Time Analysis} % (fold)
+\label{sec:running_time_analysis}
+  \subsection{NearestNeighbor} % (fold)
+  \label{sub:nearestneighbor}
+
+     \begin{tabular}{l l l}
+      & \textbf{NearestNeighbor}$(P)$                                                &   \\
+      1 & $ls \gets$ \textbf{LexicographicSmallest}$(P)$                                & $O(n)$    \\ 
+      2 & $p \gets P[ls]$                                                               & $O(1)$    \\ 
+      3 & \textbf{for} $i \gets 0$ \textbf{to} $|P| - 2$ \textbf{do}                    & $O(n^{2})$  \\ 
+      4 & \qquad $P \gets P \backslash \{ p \}$                                           & $O(1)$    \\ 
+      5 & \qquad $d \gets \infty$                                                         & $O(1)$    \\ 
+      6 & \qquad $q \gets p $                                                             & $O(1)$    \\ 
+      7 & \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$ \textbf{do}               & $O(n)$    \\ 
+      8 & \qquad \qquad \textbf{if} \textbf{distance}$(p, P[j]) < d$ \textbf{then}          & $O(1)$    \\ 
+      9 & \qquad \qquad ~~ $d \gets$ \textbf{distance}$(p, P[j])$                           & $O(1)$    \\ 
+      10 & \qquad \qquad ~~ $q \gets P[j]$                                                   & $O(1)$    \\ 
+      11 & \qquad \qquad \textbf{fi}                                                         &           \\ 
+      12 & \qquad \textbf{od}                                                              &           \\ 
+      13 & $S \gets S \cup \{ p \}$                                                   & $O(1)$    \\ 
+      14 & $p \gets q$                                                                   & $O(1)$     \\ 
+      15 & \textbf{od}                                                                     & \\ \hline \hline
+        &  \qquad \qquad \qquad\qquad\qquad\qquad\qquad \textbf{Total }  & $O(n^{2})$ 
+     \end{tabular}
+     \\ \\
+     The proof for the running time is of the NearestNeighbor is pretty straight forward. There are only three lines that are not constant time; line 1, line 3 and line 7. \\
+     Line 1 uses a function that searches for the lexicographic smallest for its given input set. We store sets in an array, so this can be done in $O(n)$ time.\\
+     Line 7 starts a for loop that looks through all remaining elements in the set $P$ looking for the smallest distance between point $j$ and given point $p$. This comparison is done in constant time and does not affect the running time of the for loop. In the first run, this for loop needs to go through the most number of elements, namely $n-1$ elements. The running time of this loop is $O(n)$. \\
+     Line 3 starts the for loop that runs through all elements in the set, minus the last element. Thus, this takes $O(n-1)$. We need to take into account the nested for loop and finding the lexicographic smallest point, this makes the total running time: \\
+      $O(n-1) * O(n) + O(n) =  \\
+      O(n^{2} - n ) + O(n) = \\
+      O(n^{2})$ \\
+  Thus \textbf{NearestNeighbor} runs in $O(n^{2})$.
+
+  % subsection nearestneighbor (end)
+  
+  
+  
+  
+  \subsubsection{DirectedNearestNeighbor} % (fold)
+  \label{sub:directednearestneighbor}
+    
+    \begin{tabular}{lll}
+      & \textbf{DirectedNearestNeighbor}$(P)$                           & \\
+    01 & $ls,p \gets $ \textbf{LexicograhicSmallest}$(P),P[ls]$         & $O(n)$ \\
+    02 & \textbf{for} $i \gets 0$ \textbf{to} $|P| - 2$ \textbf{do}     & $O(n^{2})$\\
+    03 & \qquad $P,skip \gets P \backslash \{ p\},false$                & $O(2)$\\
+    04 & \qquad \textbf{if} $|A| \geq 2$ \textbf{then}                  & $O(1)$\\
+    05 & \qquad \qquad $skip \gets true$                                & $O(1)$\\
+    06 & \qquad \qquad $r \gets \alpha * d(A[|A|-1],A.last) $           & $O(1)$\\
+    07 & \qquad \qquad $B \gets $ \textbf{FindPointsInRange}$(P,p,r)$   & $O(n)$\\
+    08 & \qquad \qquad \textbf{if} $|B| = 0$ \textbf{then}              & $O(1)$\\
+    09 & \qquad \qquad \qquad $skip \gets false$                        & $O(1)$\\
+    10 & \qquad \qquad \textbf{elseif} $|B| = 1$ \textbf{then}          & $O(1)$\\
+    11 & \qquad \qquad \qquad $q \gets B[0]$                            & $O(1)$\\
+     & \qquad \qquad \textbf{else}                                      &\\
+    12 & \qquad \qquad \qquad $B \gets \{A.last\} \cap \{A[|A|-1]\} \cup B$& $O(1)$\\
+    13 & \qquad \qquad \qquad $q \gets$ \textbf{GiveBestPoint}$(P)$     & $O(n)$ \\
+     & \qquad \qquad \textbf{fi} & \\
+     & \qquad \textbf{fi} & \\
+    14 & \qquad \textbf{if} \textbf{not} $skip$ \textbf{then}           & $O(1)$\\
+    15 & \qquad \qquad $r,q \gets \infty,p$                             & $O(2)$\\
+    16 & \qquad \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$ \textbf{do}  & $O(n-1)$\\
+    17 & \qquad \qquad \qquad $c \gets d(p,P[J])$                       & $O(1)$ \\
+    18 & \qquad \qquad \qquad \textbf{if} $c < r$ \textbf{then}         & $O(1)$\\
+    19 & \qquad \qquad \qquad \qquad  $r,q \gets c, P[j]$               & $O(2)$\\
+     & \qquad \qquad \qquad \textbf{fi} & \\
+     & \qquad \qquad \textbf{od} & \\
+      & \qquad \textbf{fi} & \\
+    20 & \qquad $A,p \gets A \cup {q},q$                                & $O(2)$\\
+    & \textbf{od}&     \\ \hline
+    &  \qquad \qquad \qquad\qquad\qquad\qquad\qquad \textbf{Total }  & $O(n^{2})$ 
+    \end{tabular}
+    
+    The overall running time of DirectedNearestNeighbor is determined by three subfunctions and two for loops. We will first explain the factors of consequence, then what situations there are that define the running time.
+    DirectedNearestNeighbor uses two for loops, the first is on line 02 and goes through $n-1$ input element. The second for loop is on line 16 and takes $O(n-1)$ time, but is not run for each iteration, only for the first and last element. \\
+    There are three sub functions that have each have a running time of $O(n)$, LexicographicSmallest (see \ref{ref:rtals}), FindPointsInRange (see \ref{rtafpir}) and GiveBestPoints (see \ref{ref:rtagbp}). Only FindPointsInRange and GiveBestPoints are nested in the main for loop and are thus of consequence.\\
+    There are to main scenario's when running DirectedNearestNeighbour:
+    \begin{itemize}
+      \item We are busy with either the first or the input last element.
+      \item We are processing any other input element.
+    \end{itemize}
+     
+     The first situation is the same as running our first NearestNeighbor and is done in $O(n^{2})$, it's the second case that has been changed.\\
+     FindPointsInRange is always run in this situation, taking $O(n)$ time. It is followed by an if statement, that call the function GiveBestPoint that also runs in $O(n)$. The total running time of is: \\
+
+         $O(n) + (O(n-1)*(3O(n)))$ \\
+         $O(n) + ( O(n^{2}-3n) )$ \\
+         $O(n^{2} -2n)$\\
+         $O(n^{2})$ \\ \\
+      Thus, the running time is $O(n^{2})$, though in practice, it will be slightly slower than our first algorithm.
+    
+  % subsubsection directednearestneighbor (end)
+  
+  \subsubsection{FindPointsInRange} % (fold)
+  \label{ref:rtafpir}
+    This function consists of a single for loop that goes through all of its inputs elements. In the for loop is a single if statement, that checks the distance between the given point and the current point. If the current point is within the given range, it is added to the solution. \\
+    This takes $O(n)$ time.
+  % subsubsection findpointsinrange (end)
+  
+  \subsubsection{GiveBestPoint} % (fold)
+  \label{ssub:rtagbp}
+    This function consists of a single loop that goes through all of its inputs elements, and several if statements. GiveBestPoints first calculates the angle of it's first line segment than goes into the for loop. The for loop goes through all other points, makes the line segment, calculates the angle and compares it with the current best (and replaces if so). After the for loop it returns the solution. \\
+    Because only the for loop takes longer than constant time, the running time of GiveBestPoint is $O(n)$
+  % subsubsection givebestpoint (end)
+  
+<<<<<<< .working
+  
+=======
+\subsection{ImprovedNearestNeighbor} % (fold)
+\label{sub:improvednearestneighbor}
+
+% subsection improvednearestneighbor (end)
+  
+>>>>>>> .merge-right.r317
+% section running_time_analysis (end)
+
+
+
+\bibliographystyle{plain}
+\bibliography{}
+\end{document}

@@ -1,0 +1,131 @@
+%
+%  Notulen 30-11-2009
+%  OGO 2.1 Groep 3
+%
+\documentclass[a4paper]{article}
+
+% Packages!
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{boxedminipage}
+\usepackage{listings}
+\usepackage{ifpdf}
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\title{Notulen Vergadering OGO 2.1 Groep 3 2009-2010}
+\date{}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\section{\underline{Opening Vergadering}} % (fold)
+\label{sec:opening_vergadering}
+\begin{tabular}{ll}
+  Datum:      & 30-11-2009\\
+  Begin tijd: & 13:45\\
+  Voorzitter: & Etienne van Delden\\
+  Notulist:   & Jan\^ot Sijen\\
+  & \\
+  Aanwezig:   & Etienne van Delden\\
+              & Tim Hermans\\
+              & Tom van der Hoek\\
+              & Jan\^ot Sijen\\
+              & Robin Wolffensperger\\
+              & Ron Vanderfeesten (tutor)\\
+  Afwezig:    & $\emptyset$ \\
+\end{tabular}
+
+% section opening_vergadering (end)
+\section{\underline{Vaststelling van de Agenda:}} % (fold)
+\label{sec:vaststellingvandeagenda}
+
+\begin{itemize}
+\item Geen extra punten.
+\end{itemize}
+
+% section vaststellingvandeagenda (end)
+
+\section{\underline{Verslag vorige vergadering:}} % (fold)
+\label{sec:verslagvorigevergadering}
+
+\begin{itemize}
+\item Waarom is Ron scheel? Misschien beter weghalen.
+\end{itemize}
+
+% section verslagvorigevergadering (end)
+
+\section{\underline{Mededelingen:}} % (fold)
+\label{sec:mededelingen}
+
+\begin{itemize}
+\item Peach is actief. (Vak OGO.)
+\item Op Peach kun je je programma inzenden en testen.
+\item Advies: Lever zo snel mogelijk iets in, en zorg dat je zo snel mogelijk een programma hebt dat Peach slikt.
+\end{itemize}
+
+% section mededelingen (end)
+
+\section{\underline{Feedback concept verslag:}} % (fold)
+\label{sec:feedbackconceptverslag}
+
+\begin{itemize}
+\item Concept verslag is nog niet doorgelezen. (Stond niet in Ron's zakcomputer ding.)
+\item Ron leest het nog door voor woensdag.
+\end{itemize}
+
+% section feedbackconceptverslag (end)
+
+\section{\underline{Status update:}} % (fold)
+\label{sec:statusupdate}
+
+\begin{itemize}
+\item Eerste iteratie nieuwe oplossing is compleet. (for-loop algoritme)
+\item Tweede iteratie is bijna af.
+\item Ron is onder de indruk. We zijn in de afgelopen weken ver gekomen!
+\item De stap naar open/intersect zal niet moeilijk zijn. (Maak kleine wijzigingen hiervoor.)
+\item Maandagavond moet de code worden ingeleverd.
+\item Ron probeert ons wat extra dagen de tijd te geven, maar hiervoor is geen garantie.
+\item Focus op de code, presentatie is niet echt belangrijk.
+\end{itemize}
+
+% section statusupdate (end)
+
+\section{\underline{Planning vandaag:}} % (fold)
+\label{sec:planningvandaag}
+
+\begin{itemize}
+\item Tweede iteratie, puntjes op de i zetten.
+\item Nieuwe aanpassing algoritme afmaken.
+\end{itemize}
+
+% section planningvandaag (end)
+
+\section{\underline{Rondvraag:}} % (fold)
+\label{sec:rondvraag}
+
+\begin{itemize}
+\item Geen vragen.
+\end{itemize}
+
+% section rondvraag (end)
+
+\section{\underline{Sluiting}} % (fold)
+\label{sec:sluiting}
+\small{\emph{Logboeken!}}
+
+% section sluiting (end)
+
+\end{document}

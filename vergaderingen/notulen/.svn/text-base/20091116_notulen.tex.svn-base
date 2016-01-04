@@ -1,0 +1,136 @@
+%
+%  Notulen 16-11-2009
+%  OGO 2.1 Groep 3
+%
+\documentclass[a4paper]{article}
+
+% Packages!
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{boxedminipage}
+\usepackage{listings}
+\usepackage{ifpdf}
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\title{Notulen Vergadering OGO 2.1 Groep 3 2009-2010}
+\date{}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\section{\underline{Opening Vergadering}} % (fold)
+\label{sec:opening_vergadering}
+\begin{tabular}{ll}
+  Datum:      & 16-11-2009\\
+  Begin tijd: & 13:45\\
+  Voorzitter: & Etienne van Delden\\
+  Notulist:   & Jan\^ot Sijen\\
+  & \\
+  Aanwezig:   & Etienne van Delden\\
+              & Tim Hermans\\
+              & Jan\^ot Sijen\\
+              & Robin Wolffensperger\\
+              & Ron Vanderfeesten (tutor)\\
+  Afwezig:    & Tom van der Hoek \\
+\end{tabular}
+
+% section opening_vergadering (end)
+\section{\underline{Vaststelling Agenda:}} % (fold)
+\label{sec:vaststellingagenda}
+
+\begin{itemize}
+\item Geen aanvullingen.
+\end{itemize}
+
+% section vaststellingagenda (end)
+
+\section{\underline{Notulen vorige keer:}} % (fold)
+\label{sec:notulenvorigekeer}
+
+\begin{itemize}
+\item Ron heeft niet gekeken, sorry!
+\item Geen opmerkingen.
+\end{itemize}
+
+% section notulenvorigekeer (end)
+
+\section{\underline{Mededelingen:}} % (fold)
+\label{sec:mededelingen}
+
+\begin{itemize}
+\item Geen conceptverslagen nagekeken. Het conceptverslag deze week wordt gewoon met de andere nagekeken.
+\end{itemize}
+
+% section mededelingen (end)
+
+\section{\underline{Concepverslag:}} % (fold)
+\label{sec:concepverslag}
+
+\begin{itemize}
+\item Meer tekst, minder code, plaatjes. Perfect!
+\item HTML pagina is niet een echte referentie...
+\item Line/line intersection staat misschien ook in het Lineaire Algebra boek; dus we kunnen dat refereren.
+\item Het wordt nog gelezen door Ron, maar het ziet er wel al goed uit!
+\item Bij de paper referentie: het jaar erbij zetten
+\item Aan het einde van de dag een versie van het conceptverslag inleveren.
+\end{itemize}
+
+% section concepverslag (end)
+
+\section{\underline{Voortgang OGO:}} % (fold)
+\label{sec:voortgangogo}
+
+\begin{itemize}
+\item Vorige week was toch nog de for-loop!
+\item Backtracking werkt, maar het is heel langzaam.
+\item Misschien omschrijven naar iteratief? (Jumpen, niet callen!)
+\item Maar eerst: kijken of we backtracking effecient kunnen maken.
+\item Backtracking met een range limitation: Dan hebben we Greedy algoritme!
+\item Backtracking is basically brute forcing. Er zijn optimalizaties; zoals afstanden tussen punten opslaan. (Of bijvoorbeeld pruning.)
+\item Alternatieven: Greedy and Randomize
+\item Greedy: Ik sta ergens, en ik kies één mogelijkheid waarvan ik denk dat die het beste is. (Zoiets als de for-loop?)
+\item Randomize kan alleen in selecte gevallen. In deze situatie is het misschien iets minder handig.
+\item For-loop; kunnen we dit niet oplossen door het begin- en eindpunt slim te kiezen?
+\end{itemize}
+
+% section voortgangogo (end)
+
+\section{\underline{Actielijst:}} % (fold)
+\label{sec:actielijst}
+
+\begin{itemize}
+\item Verslag afmaken
+\item Algoritme fixen. (Ofwel Greedy iteratief maken, of de for-loop verbeteren.)
+\end{itemize}
+
+% section actielijst (end)
+
+\section{\underline{Rondvraag:}} % (fold)
+\label{sec:rondvraag}
+
+\begin{itemize}
+\item Green vragen.
+\end{itemize}
+
+% section rondvraag (end)
+
+\section{\underline{Sluiting}} % (fold)
+\label{sec:sluiting}
+\small{\emph{Logboeken!}}
+
+% section sluiting (end)
+
+\end{document}

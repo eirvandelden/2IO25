@@ -1,0 +1,16 @@
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+  \bibitem{algorithms}  
+    T.H. Cormen, C.E. Leiserson, R.L. Rivest and C. Stein. 
+    \textit{Introduction to Algorithms} (2$^{nd}$ edition). 
+    MIT Press, 2001.
+  \bibitem{geometry}
+    M. de Berg. 
+    \textit{Computational Geometry: Algorithms and Applications} (3$^{rd}$ edition). 
+    Springer, 2008.
+  \bibitem{kd-trees}
+    Andrew Moore. 
+    Efficient Memory-based Learning for Robot Control. 
+    \textit{An intoductory tutorial on kd-trees}. 
+    pages 6-1 - 6-18, 1991.
+\end{thebibliography}

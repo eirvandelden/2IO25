@@ -1,0 +1,163 @@
+\section{Description of the algorithms}
+\label{sec:Description}
+
+In this section we present the description of the algorithms we have used to find the desired curve for the set of given points.
+Each algorithm is first briefly introduced in natural language and then followed by pseudocode. After the pseudocode, analysis and running time of each algorithm is given.
+We first give some general procedures (section~\ref{sub:general}), then pseudocode for the closed curve (section~\ref{sub:closed}), followed by pseudocode for the open curve (section~\ref{sub:self-intersecting}). Finally pseudocode for the up-to-5 curve is given (section~\ref{sub:up-to-5}).
+
+\subsection{General algorithms and datastructures}
+\label{sub:general}
+
+Algorithms in this subsection are used by all four subtasks of the curve reconstruction.\\
+In each of the algorithms of the subtasks these procedures are called in the process of reconstruction.\\
+
+\subsubsection{BuildkDTree}
+
+We first use a $kD-tree$ to store the set of given points. The pseudocode of building such a tree is given below.
+
+\begin{codebox}
+\Procname{$\proc{BuildkDTree}(P, d)$}
+\li $done \gets False$
+\li \If     $\id{length}[P] = 1$
+\li \Then   $result.value \gets P[0]$
+\li \Else   \If     $d ~ \textbf{mod} ~ 2 = 0$
+\li         \Then   \For    $i \gets 0$ \To $(\id{length}[P] - 1)$
+\li                 \Do     $XY[i] \gets P[i].x$ { \Comment \color{YellowGreen} Store x-coordinates }
+                    \End\\
+\qquad\qquad\qquad { \Comment \color{YellowGreen} Find median on x-coordinates }
+\li                 $median \gets \proc{FindMedian}(XY)$
+\li                 \If     $(P[i].x = median) \wedge \textbf{not}(done)$
+\li                 \Then   $result.value \gets P[i].x$ { \Comment \color{YellowGreen} Store point that lies on median in node }
+\li                         $done \gets True$ \\
+\qquad\qquad\qquad{ \Comment \color{YellowGreen} If another point lies on median, than it will be added to the array S }
+\li                 \Else   \If     $P[i].x \leq median$
+\li                         \Then   $S[i] \gets P[i]$   { \Comment \color{YellowGreen} Store points left to or on median in array }
+\li                         \Else   $B[i] \gets P[i]$   { \Comment \color{YellowGreen} Store points right to median in array }
+                            \End
+                    \End
+\li         \Else   \For    $i \gets 0$ \To $(\id{length}[P] - 1)$
+\li                 \Do     $XY[i] \gets P[i].y$ { \Comment \color{YellowGreen} Store y-coordinates }
+                    \End\\
+\qquad\qquad\qquad { \Comment \color{YellowGreen} Find median on y-coordinates }
+\li                 $median \gets \proc{FindMedian}(XY)$
+\li                 \If     $(P[i].y = median) \wedge \textbf{not}(done)$
+\li                 \Then   $result.value \gets P[i].y$ { \Comment \color{YellowGreen} Store point that lies on median in node }
+\li                         $done \gets True$\\
+\qquad\qquad\qquad{ \Comment \color{YellowGreen} If another point lies on median, than it will be added to the array S }
+\li                 \Else   \If     $P[i].y \leq median$
+\li                         \Then   $S[i] \gets P[i]$   { \Comment \color{YellowGreen} Store points left to or on median in array }
+\li                         \Else   $B[i] \gets P[i]$   { \Comment \color{YellowGreen} Store points right to median in array }
+                            \End
+                    \End
+            \End
+\li         \If     $\id{length}[S] > 0$
+\li         \Then   $left \gets \proc{BuildkDTree}(S, d+1)$ { \Comment \color{YellowGreen} Build left-subtree }
+\li                 $result.left \gets left$ { \Comment \color{YellowGreen} Make pointer to left-child }
+            \End
+\li         \If     $\id{length}[B] > 0$
+\li         \Then   $right \gets \proc{BuildkDTree}(B, d+1)$ { \Comment \color{YellowGreen} Build right-subtree }
+\li                 $result.right \gets right$ { \Comment \color{YellowGreen} Make pointer to right-child }
+            \End
+\li         $result.median \gets median$
+    \End
+\li \Return $result$
+\end{codebox}
+
+\noindent $\proc{BuildkDTree}$ builds the tree we need. It does so by alternatively splitting the $x$ or $y$ axis on the middle point of the given points. A node contains this middle point and the median, with it's left tree being the tree with all points that are to the left or equal to the median and vice-versa for it's right child. Then a recursive call is done on both children.\\
+The running time of this algorithm is $O(n)$.
+
+\subsubsection{NNSearchSub}
+
+We use the Nearest Neighbor Search Algorithm (NN Algorithm) to find the point that is closest to a given point.\\
+The algorithm uses the earlier-built $kD-Tree$ to find these points. Pseudocode of this algorithm is given below.
+
+\begin{codebox}
+\Procname{$\proc{NNSearchSub}(p, Tree, d, cNN)$}
+\li \If     $d = 0$ \qquad {\Comment \color{YellowGreen}The root}
+\li \Then   \If     $p \neq Tree.Value$
+\li         \Then   $cNN \gets Tree.Node$ \qquad { \Comment \color{YellowGreen} The root becomes our best result }
+            \End
+\li \Else   \If     $(p \neq Tree.Value) \wedge (dist(p, Tree.Value) < dist(p, cNN))$
+\li         \Then   $cNN \gets Tree.Value$ \\
+            \qquad\qquad { \Comment \color{YellowGreen} The distance between $p$ and the new node is shorter than our current best result }
+            \End
+    \End
+\li \If     $(d ~ \textbf{mod}~ 2 = 0)$
+\li \Then   $h \gets p.x$ \qquad { \Comment \color{YellowGreen} Node split on X axis }
+\li \Else   $h \gets p.y$ \qquad { \Comment \color{YellowGreen} Node split on Y axis }
+    \End
+\li \If     $dist(p, cNN) \leq dist(h, Tree.Median)$
+\li \Then   \If     $h \leq Tree.Median$
+\li         \Then   $mNN \gets \proc{NNSearchSub}(p, Tree.Left, d+1, cNN)$
+\li                 \If     $dist(p, mNN) < dist(p, cNN)$
+\li                 \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+                    \End
+\li         \Else   $mNN \gets \proc{NNSearchSub}(p, Tree.Right, d+1, cNN)$
+\li                 \If     $dist(p, mNN) < dist(p, cNN)$
+\li                 \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+                    \End
+            \End
+\li \Else   { \Comment \color{YellowGreen} Search left and right in $Tree$ (order doesn't matter)}\\
+\qquad\qquad$mNN \gets \proc{NNSearchSub}(p, Tree.Random, d+1, cNN)$
+\li         \If     $dist(p, mNN) < dist(p, cNN)$
+\li         \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+            \End
+\li         $mNN \gets \proc{NNSearchSub}(p, Tree.AndereKant, d+1, cNN)$
+\li         \If     $dist(p, mNN) < dist(p, cNN)$
+\li         \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+            \End
+    \End
+\li \Return $cNN$
+\end{codebox}
+
+Searching for a specific point in a $kD-tree$ takes $O(n \log n)$.
+
+\subsection{Closed Curve Description} % (fold)
+\label{sub:closed}
+
+\begin{codebox}
+\Procname{$\proc{Closed}(P)$}
+\li $kD \gets$ $\proc{BuildkDTree}(P, 0)$
+\li \For $i \gets 0$ \To $\id{length}[P]$
+\li \Do $NN[i] \gets \proc{NNSearch}(P[i], kD, 0, root[kD])$
+    \End
+\li $Edge1 \gets NN[0]$
+\li $Edge2 \gets NN[1]$
+\li Add Edge 1 and Edge 2 to list of edges
+\li Sort the list of edges, $E$, with $\proc{SortEdges}(E)$
+\end{codebox}
+% subsection closed_curve_problem (end)
+
+\subsection{Open Curve description}
+\label{sub:open}
+
+\subsection{Self-intersecting Curve description}
+\label{sub:self-intersecting}
+
+The self-intersecting problem is a closed curve that must intersect itself at least once. From this problems follows that the algorithm must make the right choice in connecting nodes. It needs to make this choice to prevent the algorithm steering away from the place where it should intersect.\\
+
+<<<<<<< .mine
+When several points are the nearest neighbour (in range $\alpha$ from each other), then the next node is the node that is differs the least from the direction of which we came \\
+
+All other points that are nearest get connected to the chosen point. \\ \\
+Algorithm: \\ 
+\emph{Please not that this algorithm does not return the solution, just it's cost}
+\begin{codebox}
+  \Procname{$SiC\_Backtrack(S,l,lengthSoFar,minCost)$}
+  \li $n \gets length[S] $ \qquad {\Comment \color{YellowGreen} number of elements in S}
+  \li \If $l = n$
+  \li   \Then $minCost \gets lengthSoFar+ distance[S.last, NNSearch.Last]$ \qquad {\Comment \color{YellowGreen} MinCost = total length of all edges} \End
+  \li   \Else \For  $i \gets NNSearch.First$ \textbf{to} $NNSearch.Last$ \qquad {\Comment \color{YellowGreen} For each possible choice to a solution }
+  \li     \Do Connect $NNSearch.i$ with $S$ \qquad {\Comment add that Choice to S}
+  \li       $newLength \gets lengthSoFar + distance[S[l],NNSearch.i]$ \qquad {\Comment \color{YellowGreen} adjust new length}
+  \li       \If $(newLength \geq minCost) \wedge \neg (Intersects) $ \qquad {\Comment \color{YellowGreen} S can never be a solution}
+  \li         \Then \textbf{skip} \qquad {\Comment \color{YellowGreen} pruning}
+  \li         \Else $minCost \gets $ min($minCost, SiC\_Backtrack(S,NNSearch(S.last), newLength,minCost )$) \End 
+  \li         Undo Selection \End \End
+  \li \textbf{return} $minCost$
+\end{codebox}
+
+=======
+>>>>>>> .r137
+\subsection{Up-to-5 curves description}
+\label{sub:up-to-5}

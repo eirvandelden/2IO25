@@ -1,0 +1,24 @@
+===============================================================================
+
+                        Projexy Logboek Uitklapper v1.0
+                               16 september 2009
+
+===============================================================================
+
+Installatie:
+
+    1)  Installeer de Greasemonkey add-on voor Firefox via:
+          https://addons.mozilla.org/en-US/firefox/addon/748
+    
+    2)  Open "ogo.user.js" in Firefox, bijvoorbeeld met:
+		  file://C:/SVN%20map/ProjexyScript/ogo.user.js
+		
+        Òf sleep het bestand in een Firefox window.
+
+    3)  Klik "Install"
+
+===============================================================================
+
+                            (c) 2009 OGO 2.1 groep 3
+                              (trademark pending)
+

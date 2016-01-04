@@ -1,0 +1,28 @@
+\documentclass[a4paper,twoside,10pt]{article}
+\usepackage{a4wide,graphicx,fancyhdr,clrscode,wrapfig,tabularx,amsmath,amssymb,enumerate}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[pdftex,colorlinks,linkcolor=Black]{hyperref}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{codebox}
+\Procname{$\proc{Intersection}(A,B,C,D)$}
+\li $E \gets B-A$
+\li $F \gets D-C$\\
+    \Comment Make a vector perpendicular to vector E.
+\li $P.x \gets -E.y$
+\li $P.y \gets E.x$
+\li $numerator \gets ((A-C) \bullet P)$ \Comment Calculate dot-product.
+\li $denominator \gets (F \bullet P)$ \Comment Calculate dot-product.
+\li \If     $denominator <> 0$
+\li \Then   $h \gets numerator / denominator$
+\li         \If     $0 < h < 1$
+\li         \Then   $result := True$ \Comment There is an intersection.
+\li         \Else   $result := False$ \Comment There is no intersection.
+            \End
+\li \Else   $result := False$ \Comment There is no intersection.
+    \End
+\end{codebox}
+
+Figure 2: pseudo-code of the checking for intersections data structure.
+\end{document}

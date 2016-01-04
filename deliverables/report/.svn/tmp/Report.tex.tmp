@@ -1,0 +1,81 @@
+\documentclass[a4paper,twoside,10pt]{book}
+\usepackage{a4wide,graphicx,fancyhdr,clrscode,wrapfig,tabularx,amsmath,amssymb,enumerate}
+
+\begin{document}
+
+    \begin{titlepage}
+        \begin{center}
+        {\ }\\[5.0cm]
+        {\Large OGO 2.1 fall 2009}\\[0.25cm]
+        {\bf \Huge Curve Reconstruction}\\[0.75cm]
+        \begin{tabular}{p{2.75cm}p{2.75cm}p{2.75cm}p{2.75cm}p{2.75cm}}
+        E. van Delden & T. Hermans & T. van der Hoek & J. Sijen & R. Wolffensperger\\
+        (0618959) & (0664881) & (0655570) & (0652478) & (0612853)
+        \end{tabular}
+        {\ }\\[14.0cm]
+        {\ Eindhoven, \today }\\[0.2cm]
+        \end{center}
+
+    \end{titlepage}
+
+<<<<<<< .mine
+\tableofcontents
+
+\frontmatter
+\noindent{\Large\textbf{Abstract}}\\
+=======
+>>>>>>> .r48
+
+\tableofcontents
+\frontmatter
+\newpage
+
+<<<<<<< .mine
+\mainmatter
+\chapter{Introduction}
+=======
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+This work describes an algorithm to reconstruct a curve out of a set of given points.\\
+After a short introduction to the problem, a description of the algorithm is given, followed by an analysis of its running time and correctness. In the experimental evaluation section results of the experiments are given and discussed.
+The last section contains a discussion on the strong and weak points of the algorithm and ideas for improvements.\\
+>>>>>>> .r48
+
+
+
+
+\newpage
+\mainmatter
+\chapter{Introduction}
+In today's world 3D Scanners are being used for a wide variety of applications, most commonly for making 3D models to use in the production of video games or movies.
+To make such a 3D model these scanners measure a great number of points on the surface of an object, these points together are called point clouds. On such a point cloud an algorithm is applied to reconstruct the object to make the actual 3D model.\\
+In this paper we are going to look at the same problem but for 2D reconstructions; reconstruct a curve from a given set of points. Some examples of known algorithms are: Nearest Neighbor and the Crust Algorithm. Most of these algorithms use a combination of voronoi-diagrams and delaunay triangulation. We have chosen to use kd-trees to find the nearest neighbor of a specific point. The algorithms we present in this paper are each suitable for a different kind of sub-task: closed, open, self-intersecting or up-to-five. These can be found in chapter 2. In chapter 3 we present the results of the different experiments and discuss them. The final chapter consists of a short overview of the main results, discussing both the strong and the week points of the algorithms, and some ideas to improve them.
+
+<<<<<<< .mine
+\chapter{Description of the algorithms}
+=======
+\newpage
+>>>>>>> .r48
+
+\chapter{Description of the algorithms}
+
+\newpage
+
+\chapter{Experimental evaluation}
+
+\newpage
+
+\chapter{Concluding remarks}
+
+\newpage
+\backmatter
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+\begin{enumerate}[{[1]}]
+    \item T.H. Cormen, C.E. Leiserson, R.L. Rivest and C. Stein. \textit{Introduction to Algorithms} (2nd
+        edition). MIT Press, 2001.
+    \item M. de Berg. \textit{Computational Geometry: Algorithms and Applications} (3rd Edition). Springer, 2008.
+    \item Andrew Moore. Efficient Memory-based Learning for Robot Control. \textit{An intoductory tutorial on kd-trees}. pages 6-1 - 6-18, 1991.
+\end{enumerate}
+\end{document}

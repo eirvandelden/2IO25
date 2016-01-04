@@ -1,0 +1,115 @@
+\chapter{Up To Five Sort}
+\label{cha:up to five sort}
+    To make an algorithm suitable for the up-to-5 curves subtask we improved \textit{ImprovedNearestNeighbor}.
+    \textit{UpToFiveSort} uses \textit{ImprovedNearestNeighbor} without the function \textit{MakeOpenCurve}. We introduced some new functions to support \textit{UpToFiveSort}, these are given below, followed by a description of \textit{UpToFiveSort} itself.\\
+    This algorithm is, as the name suggests, solely used for making up-to-5 curves.\\
+
+  \section{Lexicographic Smallest}
+  \label{sec:utfs_lexicographic_smallest}
+    \textit{LexicographicSmallest} was not changed for \textit{UpToFiveSort}, for analysis of this function see \ref{sec:nn_lexicographic_smallest}.
+
+  \section{Insert Lost Points}
+  \label{sec:utfs_insert_lost_points}
+    \textit{InsertLostPoints} was not changed for \textit{UpToFiveSort}, for analysis of this function see \ref{sec:inn_insert_lost_points}.
+
+  \section{Up To Five Sort Sub}
+  \label{sec:up_to_five_sort_sub}
+
+    \subsection{Introduction}
+
+    \subsection{Definitions}
+    \label{sub:utfss_definitions}
+      \begin{definition} \label{def:utfss}
+
+      \end{definition}
+
+    \subsection{Functional Description}
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:utfss_proof}
+
+    \subsection{Running Time Analysis}
+    \label{sub:utfss_runnning_time_analysis}
+      create rest set
+      
+      find LS
+      
+      repeat until p = beginpunt Worstcase: O(n)
+        remove p
+        if loopcount = 8
+          insert beginpunt
+        
+        d <- infty
+        for O(n) do
+          distance
+        od
+        
+        if begin
+      
+
+
+  \section{Up To Five Sort}
+  \label{sec:up to five sort}
+
+    \subsection{Functional Description}
+    \label{sub:utfs_functional_description}
+    This function finds multiple curves in an array $C$ of points.
+    A variable $P$ is used to store multiple array's of points.
+    \textit{UpToFiveSortSub} is called to find curves in $C$. When a curve is found, the points used in the curve are removed from $C$ and added in a separate array to $P$. This process continues until $C$ is empty or when the maximum of $5$ curves is reached. For the last case the remaining points in $C$ are added on the right spot in the curve which lies closest to them. For all remaining points in $C$ the distance to the curves in $P$ is measured. A remaining point is added to a certain curve when its distance to that curve  is smaller than the distances it has to the other curves. For finding the right spot in the array to add a remaining point the function \textit{InsertLostPoints} is used. This function is called with the remaining point and the curve in which this point needs to be added.
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:utfs_proof}
+
+    \subsection{Running Time Analysis}
+    \label{sub:utfs_running_time_analysis}
+
+
+  \section{Test Results}
+  \label{sec:utfs_test_results}
+    \subsection{Running time}
+    When we look at the results of UpToFive
+        \begin{center}
+          \begin{tabular}{|p{2.5cm}|p{2.5cm}|}
+              \hline
+              Points & Seconds\\
+              \hline
+              \hline
+              500 & 0.015\\
+              \hline
+              1000 & 0.031\\
+              \hline
+              1500 & 0.062\\
+              \hline
+              2000 & 9.812\\
+              \hline
+              5000 & 24.805\\
+              \hline
+              10000 & 56.691\\
+              \hline
+              15000 & 77.330\\
+              \hline
+              20000 & 105.347\\
+              \hline
+              30000 & 163.100\\
+              \hline
+              40000 & 217.278\\
+              \hline
+              50000 & 281.118\\
+              \hline
+          \end{tabular}
+          \label{tab:utfs_runningtime}\\
+          Table 5.1: Results of testing \textit{UpToFiveSort}
+        \end{center}
+
+          \begin{center}
+            \includegraphics[scale = 0.7]{4UpToFiveSort/UTFSRuntimeGraph.png}\\
+            Figure 5.2: Graph of \textit{UpToFiveSort}'s Running Time
+            \label{fig:utfs runningtime}
+          \end{center}
+
+      \noindent The results of the running
+
+    \subsection{Correct output}
+
+
+   \subsection{Conclusion} 

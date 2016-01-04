@@ -1,0 +1,14 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}
+\BOOKMARK [2][-]{subsection.1.1}{Overview of this document}{section.1}
+\BOOKMARK [1][-]{section.2}{Description of the algorithms}{}
+\BOOKMARK [2][-]{subsection.2.1}{Nearest Neighbor}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Directed Nearest Neighbor}{section.2}
+\BOOKMARK [2][-]{subsection.2.3}{Improved Nearest Neighbor}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Up To Five Sort}{section.2}
+\BOOKMARK [1][-]{section.3}{Experimental Evaluation}{}
+\BOOKMARK [2][-]{subsection.3.1}{Visualizer}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Nearest Neighbor}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Directed Nearest Neighbor}{section.3}
+\BOOKMARK [2][-]{subsection.3.4}{Improved Nearest Neighbor}{section.3}
+\BOOKMARK [2][-]{subsection.3.5}{Up To Five Sort}{section.3}
+\BOOKMARK [1][-]{section.4}{Concluding remarks}{}

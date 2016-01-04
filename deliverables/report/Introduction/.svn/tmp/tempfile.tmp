@@ -1,0 +1,10 @@
+\section{Introduction}
+\label{sec:Introduction}
+In today's world 3D Scanners are being used for a wide variety of applications, most commonly for making 3D models for archiving purposes, or to use in the production of video games or movies.
+To make such a 3D model these scanners measure a great number of points on the surface of an object, these points together are called point clouds. On such a point cloud an algorithm is applied to reconstruct the object to make the actual 3D model.
+2D reconstruction does the same but only in a 2 dimensional form. So the points only consist of a x en y coordinate.
+\\ \\
+In this paper we are going to look at the problem of reconstructing 2D curves from a given set of points. Some examples of known algorithms that do this are: Nearest Neighbor and the Crust Algorithm. Nearest Neighbor searches for the closest point, so if you give the algorithm a set S of points and a query point the result will be the closest point in S to q. The Crust Algorithm uses a combination of voronoi-diagrams and Delaunay triangulation. Most of the other reconstruction algorithms use the same principle.
+
+We have chosen to use a form of the backtracking algorithm.
+Backtracking is a general algorithm that starts making solutions and marks them as possible candidates, when the algorithm notices that a candidate can not come to a valid solution it abandons this candidate. Our other possible ideas (like the use of a kd-tree) of which could lead to a good solution can also be found in this paper. 

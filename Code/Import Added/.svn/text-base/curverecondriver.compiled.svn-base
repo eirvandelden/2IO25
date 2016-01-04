@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="c:\lazarus\fpc\2.2.2\bin\x86_64-win64\fpc.exe" Date="979720908"/>
+  <Params Value=" -MObjFPC -Scgi -O1 -gl -WG -vewnhi -l -Fuc:\lazarus\lcl\units\x86_64-win64\ -Fuc:\lazarus\lcl\units\x86_64-win64\win32\ -Fuc:\lazarus\packager\units\x86_64-win64\ &quot;-FuD:\OGO 2e jaar\Pascal\Import Added\&quot; -Fu. &quot;-oD:\OGO 2e jaar\Pascal\Import Added\curverecondriver.exe&quot; -dLCL -dLCLwin32 curverecondriver.lpr"/>
+</CONFIG>

@@ -1,0 +1,26 @@
+\section{Description of the algorithms}
+\label{sec:Description}
+<<<<<<< .mine
+
+\subsection{Closed Curve Problem} % (fold)
+\label{sub:closed_curve_problem}
+
+For the closed curve problem, we are will be using the Nearest Neighbour Search algorithm (NN Algorithm). To find points closest to the previous and connect both. The NN algorithm is implemented with a $kD-tree$, thus ensuring that building the datastructure takes $O(n)$ and finding a particular point is done in $O(n log n)$ 
+
+\begin{codebox}
+\Procname{$\proc{BuildTree}(S)$}
+\li \If $S$ is not empty
+    \End
+\end{codebox}
+
+% subsection closed_curve_problem (end)=======
+We store the set P of points in a kd-tree to find the nearest neighbor of a specific point.\\
+\subsection{Closed-curve algorithm}
+
+\subsection{Open-curve algorithm}
+
+\subsection{Self-intersecting-curve algorithm}
+
+\subsection{Up-to-5-curves algorithm}
+
+>>>>>>> .r63

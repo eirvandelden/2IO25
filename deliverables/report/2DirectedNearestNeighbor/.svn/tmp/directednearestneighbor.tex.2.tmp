@@ -1,0 +1,198 @@
+\chapter{Directed Nearest Neighbor}
+\label{cha:directed_nearest_neighbor}
+To improve the Nearest Neighbor algorithm we now not only search for the nearest neighbor but also look at the direction we are going while constructing the curve. This way not always the nearest neighbor of a certain point is chosen, but a point which differs the least in direction from the previous edge from all other points within a certain range.
+We begin with giving some functions on which our algorithm relies, then we give a description of the algorithm itself.
+
+  \section{Lexicographic Smallest}
+  \label{sec:dnn_lexicographic_smallest}
+    \textit{LexicographicSmallest} was not changed for \textit{DirectedNearestNeigbor}, for analysis of this function see \ref{sec:nn_lexicographic_smallest}.
+
+  \section{Find Points In Range}
+  \label{sec:find_points_in_range}
+    
+    \subsection{Introduction}
+        \textit{FindPointsInRange} is introduced to find points within a certain range from a specific point. The result of this function is used in \textit{GiveBestPoint}.
+    
+    \subsection{Definitions}
+    \label{sub:fpir_definitions}
+      \begin{definition} \label{def:fpir}
+          Given the range $\alpha$, the point from which to look, $p$, and the set of points which still need to be processed, $S$, then for all points in $S$ holds, a point $q$ is returned if and only if $q$ lies within range $\alpha$ from $p$.
+      \end{definition}
+
+    \subsection{Functional Description}
+    \label{sub:fpir_functional_description}
+      This function finds all points which lie in a certain range $\alpha$ and is called with three parameters: one for the range, one for a point, $p$, and one for the array $S$ with all the points that need to be checked. In the function a new array $R$ is defined which is used to store all points in the range. Now, for all points in $S$, the distance between $p$ and a point in $S$, say $x$, is compared to the range. If the distance is smaller than the range, point $x$ is added to $R$. When all points in $S$ are processed, $R$ is returned.
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:fpir_proof}
+      Assume $q$ is a point that lies outside range $\alpha$ from $p$ and is returned by \textit{FindPointsInRange}.\\
+      According to the if-statement in \textit{FindPointsInRange} in which is checked whether or not a point lies within range $\alpha$ from $p$ or not, so $q$ cannot be part of the set of points which lie in range $\alpha$.\\
+      This is in contradiction to the assumption.\\
+      So \textit{FindPointsInRange} returns only those points that lie in range $\alpha$ from $p$.
+
+    \subsection{Running Time Analysis}
+    \label{sub:fpir_running_time_analysis}
+      This function consists of a single for loop that goes through all of its inputs elements. In the for loop is a single if statement, that checks the distance between the given point and the current point. If the current point is within the given range, it is added to the solution. \\
+      This takes $O(n)$ time.
+
+  \section{Give Best Point}
+  \label{sec:give_best_point}
+    
+    \subsection{Introduction}
+        \textit{GiveBestPoint} searches for the point which, when connected to the current curve, differs the least in direction from the current curve. This point is called the best point.\\
+        
+    \subsection{Definitions}
+    \label{sub:gbp_definitions}
+      \begin{definition} \label{def:gbp}
+          Given the edge $(p,q)$ and the set $S$, with $S$ being the $n$ points within range $\alpha$ from $q$, point $r$ in $S$ is returned if and only if the angle of the edge $(q,r)$ differs the least from the angle of the preceding edge $(p,q)$. This returned point is called the best point. (All angles are with respect to the x-axis).
+      \end{definition}
+
+    \subsection{Functional Description}
+    \label{sub:gbp_functional_description}
+        This function returns the point which, when connected to the current curve, differs the least in direction of the current curve's direction. It is called on a array $S$ of $n$ points, where the first point is called $p$, the second $q$ and the rest $[1,2,3..Count-2]$. First the angle of the edge between $p$ and $q$, say $\alpha$, is computed, then the angle between $q$ and $1$. This angle, $\beta$, is compared to $\alpha$ and the point $1$ is stored as the best point so far. Now the rest of the points are processed comparing each angle to the one of the best point so far. When all points in $S$ have been checked the best point is returned.
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:gbp_proof}
+      \textit{GiveBestPoint} starts with computing the angle of edge $(p,q)$, then it calculates the angle of the edges between $q$ and one of the $n$ points in $S$ and compares it to the angle of edge $(p,q)$. This is done for all $n$ points, while keeping track of the best point so far, say $r$.\\
+      So after all edges are processed $r$ is returned, which is indeed the point which angle differs the least from the angle of edge $(p,q)$.
+
+    \subsection{Running Time Analysis}
+    \label{sub:gbp_running_time_analysis}
+      This function consists of a single loop that goes through all of its inputs elements, and several if statements. \textit{GiveBestPoints} first calculates the angle of it's first line segment than goes into the for loop. The for loop goes through all other points, makes the line segment, calculates the angle and compares it with the current best (and replaces if so). After the for loop it returns the solution. \\
+      Because only the for loop takes longer than constant time, the running time of \textit{GiveBestPoint} is $O(n)$
+
+  \section{Directed Nearest Neighbor}
+  \label{sec:directed_nearest_neighbor}
+    
+    \subsection{Introduction}
+        \textit{NearestNeighbor} had a lot of zigzagging in its resulting curve, by adding direction to this algorithm we tried to solve this problem. \textit{DirectedNearestNeighbor} constructs a curve with as least changes of direction as possible, so there's no zigzagging anymore, but a straight line.\\ 
+        To accomplish this we look in a certain range from a specific points for points and choose the point in that range which differs the least in direction from the current curve.
+        
+    \subsection{Functional Description}
+    \label{sub:dnn_functional_description}
+        In comparison to \textit{NearestNeighbor} (\ref{sec:nearest_neighbor}) one more array $C$, which is initially empty, is used. Finding the first and second point of the solution stays the same and both points are moved from $A$ to $B$. From those two points we calculate the range, which is the distance between them multiplied by a constant $c$. Now the function \textit{FindPointsInRange} (\ref{sec:find_points_in_range}) is called with three parameters: the range, $\alpha$, the last point in our solution, $p$, and the array $A$. According to Definition~\ref{def:fpir} all points in $A$ which lie within range $\alpha$ from the $p$ are returned. Those points are stored in $C$. If there are less than two points in $C$ the \textit{NearestNeighbor} is called. When there two points or more the two points stored in $B$ are moved to $C$, making sure those points are the first two points in $C$, then \textit{GiveBestPoint} (\ref{sec:give_best_point}) is called with parameter $C$. From Definition~\ref{def:gbp} this function returns the point that, when connected to the current curve, differs the least from the direction of the preceding edge. This point is added to $B$ and deleted from $A$. These steps will be repeated until $A$ is empty.
+        
+        \begin{center}
+        \begin{tabular}{lr}
+       & \textbf{DirectedNearestNeighbor}$(P)$                                & \\
+         1     & $ls,p \gets $ \textbf{LexicograhicSmallest}$(P),P[ls]$              & \\
+         2     & \textbf{for} $i \gets 0$ \textbf{to} $|P| - 2$ \textbf{do}          & \\
+         3     & \qquad $P,skip \gets P \backslash \{ p\},false$                     & \\
+         4     & \qquad \textbf{if} $|A| \geq 2$ \textbf{then}                       & \\
+         5     & \qquad \qquad $skip \gets true$                                     & \\
+         6     & \qquad \qquad $r \gets \alpha * d(A[|A|-1],A.last) $                & \\
+         7     & \qquad \qquad $B \gets $ \textbf{FindPointsInRange}$(P,p,r)$        & \\
+         8     & \qquad \qquad \textbf{if} $|B| = 0$ \textbf{then}                   & \\
+         9     & \qquad \qquad \qquad $skip \gets false$                             & \\
+        10     & \qquad \qquad \textbf{elseif} $|B| = 1$ \textbf{then}               & \\
+        11     & \qquad \qquad \qquad $q \gets B[0]$                                 & \\
+        12     & \qquad \qquad \textbf{else}                                         &\\
+        13     & \qquad \qquad \qquad $B \gets \{A.last\} \cap \{A[|A|-1]\} \cup B$  & \\
+        14     & \qquad \qquad \qquad $q \gets$ \textbf{GiveBestPoint}$(P)$          &  \\
+        15     & \qquad \qquad \textbf{fi}                                           & \\
+        16     & \qquad \textbf{fi}                                                  & \\
+        17     & \qquad \textbf{if} \textbf{not} $skip$ \textbf{then}                & \\
+        18     & \qquad \qquad $r,q \gets \infty,p$                                  & \\
+        19     & \qquad \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$ \textbf{do}  & \\
+        20     & \qquad \qquad \qquad $c \gets d(p,P[J])$                            & \\
+        21     & \qquad \qquad \qquad \textbf{if} $c < r$ \textbf{then}              & \\
+        22     & \qquad \qquad \qquad \qquad  $r,q \gets c, P[j]$                    & \\
+        23     & \qquad \qquad \qquad \textbf{fi}                                    & \\
+        24     & \qquad \qquad \textbf{od}                                           & \\
+        25     & \qquad \textbf{fi}                                                  & \\
+        26     & \qquad $A,p \gets A \cup {q},q$                                     & \\
+        27     &\textbf{od}                                                          & \\ \hline
+       &  \qquad \qquad \qquad\qquad\qquad\qquad\qquad \textbf{Total }        & $O(n^{2})$
+        \end{tabular}
+        \label{fig:dnn_code}\\
+        Figure 3.1: The pseudocode for \textit{DirectedNearestNeighbor}
+      \end{center}
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:dnn_proof}
+      For a point in $S$ \textit{DirectedNearestNeighbor} chooses the next point such that it lies with the least change of direction from the edge you came from (see Definition~\ref{def:gbp}). \textit{DirectedNearestNeighbor} does this for all points in $S$, except for the first two points; the first point is found with \textit{LexicographicSmallest} and connected to the second by using \textit{NearestNeighbor}. Because from here on all points are chosen with the least change of direction to its preceding edge, the resulting curve will contain as least changes of direction as possible.
+
+    \subsection{Running Time Analysis}
+    \label{sub:dnn_running_time_analysis}
+       The overall running time of \textit{DirectedNearestNeighbor} is determined by three subfunctions and two for loops. We will first explain the factors of consequence, then what situations there are that define the running time.
+       \textit{DirectedNearestNeighbor} uses two for loops, the first is on line 2 and goes through $n-1$ input elements. The second for loop is on line 16 and takes $O(n-1)$ time, but is not run for each iteration, only for the first and last element. \\
+        There are three sub functions that have each have a running time of $O(n)$, \textit{LexicographicSmallest} (see \ref{sub:ls_running_time_analysis}), \textit{FindPointsInRange} (see \ref{sub:fpir_running_time_analysis}) and \textit{GiveBestPoints} (see \ref{sub:gbp_running_time_analysis}). Only \textit{FindPointsInRange} and \textit{GiveBestPoints} are nested in the main for loop and are thus of consequence.\\
+        There are two main scenario's when running \textit{DirectedNearestNeighbor}:
+        \begin{itemize}
+          \item We are busy with either the first or the input last element.
+          \item We are processing any other input element.
+        \end{itemize}
+
+         The first situation is the same as running our first \textit{NearestNeighbor} and is done in $O(n^{2})$, it's the second case that has been changed.\\
+         \textit{FindPointsInRange} is always run in this situation, taking $O(n)$ time. It is followed by an if statement, that calls the function \textit{GiveBestPoint} that also runs in $O(n)$. The total running time is: \\
+             $O(n) + (O(n-1)*(3O(n))) = O(n) + ( O(n^{2} - 3n) ) = O(n^{2} - 2n) = O(n^{2})$ \\ \\
+          Thus, the running time is still $O(n^{2})$. Though, in practice, it will be slightly slower than our first algorithm, because there are two additional function calls of O(n) time.
+
+  \section{Test Results}
+  \label{sec:dnn_test_results}
+    \subsection{Running time}
+        To determine the running time of the Directed Nearest Neighbor algorithm, we first tested our algorithm on randomly generated points.\\
+        We ran the experiments on a HP Compaq 8510w Laptop with the following specifications:\\
+        2,4 GHz Intel Core 2 Duo processor T7700\\
+        2 GB memory.
+        The results are given in Table 3.1 and Figure 3.2. The constant used by the algorithm was set at $1.5$, meaning the range for \textit{FindPointsInRange} is the length of the last-drawn line multiplied by $1.5$.
+
+        \begin{center}
+          \begin{tabular}{|p{2.5cm}|p{2.5cm}|}
+              \hline
+              Points & Seconds\\
+              \hline
+              \hline
+              500 & 0.015\\
+              \hline
+              1000 & 0.047\\
+              \hline
+              1500 & 0.078\\
+              \hline
+              2000 & 0.14\\
+              \hline
+              5000 & 0.624\\
+              \hline
+              10000 & 2.246\\
+              \hline
+              15000 & 5.414\\
+              \hline
+              20000 & 9.407\\
+              \hline
+              30000 & 20.936\\
+              \hline
+              40000 & 45.864\\
+              \hline
+              50000 & 63.367\\
+              \hline
+              60000 & 93.335\\
+              \hline
+              80000 & 183.772\\
+              \hline
+          \end{tabular}
+          \label{tab:dnn_runningtime}\\
+          Table 3.1: Results of testing \textit{DirectedNearestNeighbor}
+        \end{center}
+        
+        \begin{center}
+        \includegraphics[scale = 0.7]{2DirectedNearestNeighbor/dnnRuntimeGraph.png}\\
+        Figure 3.2: Graph of \textit{DirectedNearestNeighbor}'s Running Time
+        \label{fig:dnn_runnningtime}
+        \end{center}
+        
+        \noindent When comparing the above running times to the ones from Nearest Neighbor, we observe this algorithm is indeed a little slower as we have shown in the running time analysis (see section~\ref{sub:dnn_running_time_analysis}). However, when we introduce a trend line that derives a $n^2$ function from the results, we see that the algorithm is still $O(n^2)$.\\
+
+        \subsection{Correct Output}
+        After testing some of the test-cases, we noticed some of the previous algorithm's problems were now solved. The Flat test-case with 178 points was constructed correctly with the DirectedNearestNeighbor, but we also noticed test-cases still going wrong.
+        This is due to that the algorithm still does not check for intersections when they are needed or not, another possibility is a non-optimal choice of the constant for determine the range. A clear example of this is the Spiral test-case. When we ran this with the above stated constant, we saw that because there were two points really close to each other (see red square in Figure 3.5), it does not choose the point after it correctly. This is because the next line to be drawn is much longer than $1.5$ times the small line between the previous two points.\\
+        \noindent Another thing we noticed was that the problem of lines going right through the graph still existed (and maybe even got worse, see Figure 3.6). This is because, now that the algorithm is pickier, more points are left at the end. Since the algorithm wants to connect all points, it picks the ones left at the end.
+        A solution for this could be checking for unused points at the end, and then try to insert these point in the correct place.\\
+        
+        \includegraphics[scale = 0.5]{2DirectedNearestNeighbor/dnnSpiralgraph.png}
+        \label{fig:dnn_incorrectspiral}          
+        \includegraphics[scale = 0.5]{2DirectedNearestNeighbor/dnnSpringgraph.png}\\
+        \label{fig:dnn_incorrectspring}
+        \qquad\qquad\qquad Figure 3.5: Incorrect Spiral \qquad\qquad\qquad Figure 3.6: Incorrect Spring
+
+        \subsection{Conclusion}
+        When we look at several incorrect test-cases, we see that we need a better way of picking the range for Find-Points-In-Range. Also, we need to check for unused or incorrectly inserted points at the end. This is needed to make sure the points are inserted correctly and not just connected to each other at the end, messing up the curve. Another thing we could improve on is to look more carefully at the curve's direction, instead of just looking at angles to points in a certain range. Another improvement we should consider is to check for intersections at the end of reconstruction. 

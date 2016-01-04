@@ -1,0 +1,25 @@
+\section{Introduction}
+\label{sec:Introduction}
+In today's world 3D Scanners are being used for a wide variety of applications, most commonly for making 3D models for archiving purposes, or to use in the production of video games or movies.
+To make such a 3D model these scanners measure a great number of points on the surface of an object, these points together are called point clouds. On such a point cloud an algorithm is applied to reconstruct the object to make the actual 3D model.
+2D reconstruction does the same but only in a two dimensional form. So the points only consist of $x$ and $y$ coordinates.
+\\
+In this paper we are going to look at the problem of reconstructing 2D curves from a given set of points. This is an important subject in today's world; 2D scanners are being used for a wide variety of applications, most commonly for making 2D models for archiving purposes. To make such a 2D model these scanners measure a great number of points on the surface of an object, these points together are called point clouds. On such a point cloud an algorithm is applied to reconstruct the object to make the actual 2D model.\\ \\
+We have designed, implemented and tested an algorithm to solve the different curves of the given problems. We have repeated this process after each batch of experiments, using the results of those experiments to improve our algorithm. Testing the algorithms was done on a number of testcases, using a visualizer to check the resulting curve, and keeping track of the running time of the algorithm.\\ \\ \\
+The results of our development are the algorithms \textit{NearestNeighbor}, the improved versions \textit{DirectedNearestNeigbor} and \textit{ImprovedNearestNeighbor} and \emph{UpToFiveSort}. \\
+\textit{NearestNeighbor} searches for the nearest neighbor of the input points and connects them to reconstruct the curve. It does so in $O(n^{2})$, both theoretically and in practice. \\
+\textit{DirectedNearestNeighbor} searches for the point within a certain range which differs the least in direction of the currently constructed curve. \emph{DirectedNearestNeigbor} run in $O(n^{2})$ For the self-intersecting curves this is a good solution, but for the other cases \textit{ImprovedNearestNeighbor} and \textit{UpToFiveSort} proved to be better. \\
+\textit{ImprovedNearestNeighbor} searches for the nearest neighbor of the input points until it's back at the starting point and then inserts all the points it skipped in an already existing curve. \emph{ImprovedNearestNeighbor} also runs in $O(n^{2})$. \\
+ \textit{UpToFiveSort} uses \textit{ImprovedNearestNeighbor} to make multiple curves. When the curve is back at its starting point, the next curve is constructed with (some of) the remaining points, and continues on until there are no points left. When there are more than five curves constructed, the smallest curves are inserted into the nearest curve. The running time of \emph{UpToFiveSort} is the most curious, it's theoretical runnning time is $O(n^{3})$, but during our tests it ran in $O(n)$. \\
+In our conclusion we revisit the results of our experiments and determine what algorithms are needed to solve any of the curve reconstruction problems.
+
+\subsection{Overview of this document}
+\label{sec:overview_of_this_document}
+This report has three parts; our algorithms, our experiments with both discussions about our visualizer and the algorithms and our concluding remarks on the process of implementing a 2D-reconstruction algorithm.\\
+The outline of each algorithm is as follows:
+\begin{itemize}
+    \item Additionally used functions
+    \item Needed definitions
+    \item Proof of Correction
+    \item Running time analysis
+\end{itemize} 

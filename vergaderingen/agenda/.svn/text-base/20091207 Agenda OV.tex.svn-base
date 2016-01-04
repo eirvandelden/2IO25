@@ -1,0 +1,151 @@
+%
+%  untitled
+%
+%  Created by Etienne van Delden on 2009-03-31.
+%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%
+\documentclass[a4paper]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+
+% Setup for fullpage use
+%\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+%\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+\title{Agenda OGO 2.1 Vergadering 2009-2010}
+\date{}
+
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\maketitle
+
+\section{\underline{Opening Vergadering}} % (fold)
+\label{sec:opening_vergadering}
+\begin{tabular}{ll}
+  Datum:      & 07-12-2009\\
+  Begin tijd: & 13:45\\
+  Voorzitter: & Etienne van Delden\\
+  Notulist:   & Jan\^ot Sijen\\
+  \multicolumn{2}{l}{Aanwezigheid leden}
+\end{tabular}
+
+
+% section opening_vergadering (end)
+
+\section{\underline{Vaststelling van de Agenda}} % (fold)
+\label{sec:vaststelling_van_de_agenda}
+
+% section vaststelling_van_de_agenda (end)
+
+\section{\underline{Verslag vorige vergadering}} % (fold)
+\label{sec:bespreking_van_de_vorige_notulen}
+
+% section bespreking_van_de_vorige_notulen (end)
+
+\section{\underline{Mededelingen}} % (fold)
+\label{sec:mededelingen}
+% section mededelingen (end)
+
+
+\section{\underline{Status update OGO en planning deze week}} % (fold)
+\label{sec:voortgang_ogo}
+
+  \begin{itemize}
+    \item Hebben we verlenging gekregen?
+    \item Update: Closed Curve
+    \item Update: Open Curve
+    \item Update: Intersection
+    \item Update: Up to five
+    \item Vrijdag: verslag?
+    \item Presentatie?
+  \end{itemize}
+
+
+% section voortgang_ogo (end)
+
+
+\section{\underline{Rondvraag}} % (fold)
+\label{sec:rondvraag}
+
+
+% section rondvraag (end)
+
+\section{\underline{Punten voor de volgende vergadering}} % (fold)
+\label{sec:punten_voor_de_volgende_vergadering}
+
+% section punten_voor_de_volgende_vergadering (end)
+
+\section{\underline{Sluiting}} % (fold)
+\label{sec:sluiting}
+\small{\emph{Logboek invullen!}}
+% section sluiting (end)
+
+\section{Bijlage: Deadlines} % (fold)
+\label{sec:bijlage_deadlines}
+
+  \begin{tabular}{|p{5cm}|p{3cm}|p{2.5cm}|p{4cm}|}
+      \hline
+      \textbf{Subject} & \textbf{Soft Deadline} & \textbf{Hard deadline} & \textbf{Place}\\
+      \hline
+      \hline
+      Code (soft deadline) & 23 November & 7 December & 10.46\\
+      \hline
+      Final report (soft deadline) & 2 December & 11 December & 10.46 / K. Buchin (at HG 7.22)\\
+      \hline
+      Presentation & 9 December & &10.46\\
+      \hline
+      Final meeting & 14 December & & AUD 10\\
+      \hline
+  \end{tabular} \\ \\
+
+% section bijlage_deadlines (end)
+
+\end{document}

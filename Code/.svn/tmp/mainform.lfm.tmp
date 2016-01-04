@@ -1,0 +1,282 @@
+<<<<<<< .mine
+object Form1: TForm1
+  Left = 611
+  Height = 605
+  Top = 75
+  Width = 500
+  ActiveControl = Panel1
+  Caption = 'CurveReconDriver'
+  ClientHeight = 605
+  ClientWidth = 500
+  OnCreate = FormCreate
+  LCLVersion = '0.9.29'
+  object Tekening: TPaintBox
+    Left = 0
+    Height = 500
+    Top = 0
+    Width = 500
+    Align = alClient
+    OnMouseDown = TekeningMouseDown
+    OnMouseMove = TekeningMouseMove
+    OnMouseUp = TekeningMouseUp
+    OnMouseLeave = TekeningMouseLeave
+    OnPaint = TekeningPaint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 105
+    Top = 500
+    Width = 500
+    Align = alBottom
+    ClientHeight = 105
+    ClientWidth = 500
+    TabOrder = 0
+    object LabelOOR: TLabel
+      Left = 8
+      Height = 18
+      Top = 78
+      Width = 189
+      Caption = 'Some points are out of range!'
+      ParentColor = False
+      Visible = False
+    end
+    object ButtonClear: TButton
+      Left = 222
+      Height = 23
+      Top = 8
+      Width = 80
+      Caption = 'Clear'
+      OnClick = ButtonClearClick
+      TabOrder = 3
+    end
+    object ButtonNN: TButton
+      Left = 344
+      Height = 23
+      Top = 8
+      Width = 144
+      Caption = 'Nearest Neighbor'
+      Default = True
+      OnClick = ButtonNNClick
+      TabOrder = 4
+    end
+    object ButtonVoegToe: TButton
+      Left = 120
+      Height = 23
+      Top = 8
+      Width = 88
+      Caption = 'Add'
+      OnClick = ButtonVoegToeClick
+      TabOrder = 2
+    end
+    object EditY: TEdit
+      Left = 64
+      Height = 22
+      Top = 8
+      Width = 48
+      TabOrder = 1
+      Text = '0'
+    end
+    object EditX: TEdit
+      Left = 8
+      Height = 22
+      Top = 8
+      Width = 48
+      TabOrder = 0
+      Text = '0'
+    end
+    object CheckBoxClosed: TCheckBox
+      Left = 344
+      Height = 18
+      Top = 36
+      Width = 104
+      Caption = 'Closed Curve'
+      Checked = True
+      State = cbChecked
+      TabOrder = 5
+    end
+    object EditRandom: TEdit
+      Left = 8
+      Height = 22
+      Top = 41
+      Width = 104
+      TabOrder = 6
+      Text = '10'
+    end
+    object ButtonRandom: TButton
+      Left = 120
+      Height = 23
+      Top = 41
+      Width = 88
+      Caption = 'Random'
+      OnClick = ButtonRandomClick
+      TabOrder = 7
+    end
+    object ButtonImport: TButton
+      Left = 222
+      Height = 23
+      Top = 41
+      Width = 80
+      Caption = 'Import...'
+      OnClick = ButtonImportClick
+      TabOrder = 8
+    end
+    object ButtonFit: TButton
+      Left = 222
+      Height = 23
+      Top = 73
+      Width = 80
+      Caption = 'Zoom Fit'
+      OnClick = ButtonFitClick
+      TabOrder = 9
+    end
+    object ButtonBacktrack: TButton
+      Left = 344
+      Height = 23
+      Top = 73
+      Width = 144
+      Caption = 'Backtracking'
+      OnClick = ButtonBacktrackClick
+      TabOrder = 10
+    end
+  end
+end
+=======
+object Form1: TForm1
+  Left = 828
+  Height = 605
+  Top = 220
+  Width = 500
+  ActiveControl = Panel1
+  Caption = 'CurveReconDriver'
+  ClientHeight = 605
+  ClientWidth = 500
+  OnCreate = FormCreate
+  LCLVersion = '0.9.26.2'
+  object Tekening: TPaintBox
+    Height = 500
+    Width = 500
+    Align = alClient
+    OnMouseDown = TekeningMouseDown
+    OnMouseMove = TekeningMouseMove
+    OnMouseUp = TekeningMouseUp
+    OnMouseLeave = TekeningMouseLeave
+    OnPaint = TekeningPaint
+  end
+  object Panel1: TPanel
+    Height = 105
+    Top = 500
+    Width = 500
+    Align = alBottom
+    ClientHeight = 105
+    ClientWidth = 500
+    TabOrder = 0
+    object LabelOOR: TLabel
+      Left = 8
+      Height = 14
+      Top = 78
+      Width = 145
+      Caption = 'Some points are out of range!'
+      ParentColor = False
+      Visible = False
+    end
+    object ButtonClear: TButton
+      Left = 222
+      Height = 23
+      Top = 8
+      Width = 80
+      Caption = 'Clear'
+      OnClick = ButtonClearClick
+      TabOrder = 3
+    end
+    object ButtonNN: TButton
+      Left = 344
+      Height = 23
+      Top = 8
+      Width = 144
+      Caption = 'Nearest Neighbor'
+      Default = True
+      OnClick = ButtonNNClick
+      TabOrder = 4
+    end
+    object ButtonVoegToe: TButton
+      Left = 120
+      Height = 23
+      Top = 8
+      Width = 88
+      Caption = 'Add'
+      OnClick = ButtonVoegToeClick
+      TabOrder = 2
+    end
+    object EditY: TEdit
+      Left = 64
+      Height = 23
+      Top = 8
+      Width = 48
+      TabOrder = 1
+      Text = '0'
+    end
+    object EditX: TEdit
+      Left = 8
+      Height = 23
+      Top = 8
+      Width = 48
+      TabOrder = 0
+      Text = '0'
+    end
+    object CheckBoxClosed: TCheckBox
+      Left = 344
+      Height = 17
+      Top = 36
+      Width = 81
+      Caption = 'Closed Curve'
+      Checked = True
+      State = cbChecked
+      TabOrder = 5
+    end
+    object EditRandom: TEdit
+      Left = 8
+      Height = 23
+      Top = 41
+      Width = 104
+      TabOrder = 6
+      Text = '10'
+    end
+    object ButtonRandom: TButton
+      Left = 120
+      Height = 23
+      Top = 41
+      Width = 88
+      Caption = 'Random'
+      OnClick = ButtonRandomClick
+      TabOrder = 7
+    end
+    object ButtonImport: TButton
+      Left = 222
+      Height = 23
+      Top = 41
+      Width = 80
+      Caption = 'Import...'
+      OnClick = ButtonImportClick
+      TabOrder = 8
+    end
+    object ButtonFit: TButton
+      Left = 222
+      Height = 23
+      Top = 73
+      Width = 80
+      Caption = 'Zoom Fit'
+      OnClick = ButtonFitClick
+      TabOrder = 9
+    end
+    object ButtonBacktrack: TButton
+      Left = 344
+      Height = 23
+      Top = 73
+      Width = 144
+      Caption = 'Backtracking'
+      OnClick = ButtonBacktrackClick
+      TabOrder = 10
+    end
+  end
+end
+>>>>>>> .r195

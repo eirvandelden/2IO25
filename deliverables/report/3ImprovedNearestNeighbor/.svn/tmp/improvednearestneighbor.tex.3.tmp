@@ -1,0 +1,159 @@
+\chapter{Improved Nearest Neighbor}
+\label{cha:improved_nearest_neighbor}
+
+Although the \textit{DirectedNearestNeighbor} gave better results in some test-cases (especially self-intersecting curves) than \textit{NearestNeighbor}, there were a lot of test-cases in which the resulting figure was far worse than the one \textit{NearestNeighbor} constructed. Therefore we continued to improve \textit{NearestNeighbor} and use \textit{DirectedNearestNeighbor} for the self-intersecting curve reconstruction.\\
+We added the functionality of inserting points at the end, this way there are no connections between a point on one side of the canvas and one on the other side.
+
+  \section{Lexicographic Smallest}
+  \label{sec:inn_lexicographic_smallest}
+    \textit{LexicographicSmallest} was not changed for \textit{ImprovedNearestNeigbor}, for analysis of this function see \ref{sec:nn_lexicographic_smallest}.
+
+  \section{Insert Lost Points}
+  \label{sec:inn_insert_lost_points}
+
+    \subsection{Definitions}
+    \label{sub:ilp_definitions}
+        \begin{definition} \label{def:ilp}
+          A lost point is a point that is not in the curve, after using the Nearest Neighbor algorithm
+        \end{definition}
+
+    \subsection{Functional Description}
+
+        This function inserts all lost points on the best spot in the solution array $C$, which contains the currently connected points in order, and is initially called with an array of lost points, say $X$. For every point in $X$ its nearest neighbor is searched for in array $C$. The index $i$ of each nearest neighbor is stored, the distance between $x$ and $C[i-1]$ is stored in $v$ and the distance between $x$ and $C[i+1]$ in $w$. Next $v$ is compared to $w$, if $v$ is smaller or equal to $w$, $x$ is inserted at $C[i]$ in $C$, else $x$ is inserted on $C[i+1]$ in $C$. After all points are inserted ($X$ is empty) $C$ is returned.\\
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:ilp_proof}
+
+    \subsection{Running Time Analysis}
+    \label{sub:ilp_running_time_analysis}
+<<<<<<< .mine
+      \emph{InsertLostPoints} is given two set; the solution set, say $SOL$, so far and a set containing the points that have been skipped, say $LPS$. Now for each point in $LPS$, say the point $p$, the distance is calculated between $p$ and each point in $LPS$. The smallest distance is saved, a decision is made where our point $p$ needs to be inserted and is then inserted.\\
+       The running time of \emph{InsertLostPoint} is determined by the amount of points in $LPS$, say $n$ points, the number of points in $SOL$, say $k$ points and inserting a point into an array. Determining the closest point takes $O(k)$ time, inserting takes $O(k)$ time. These two operations are run in a for loop that takes $O(n)$ time, so the running time of \emph{InsertLostPoint} takes $O(n*(2k)) = O(n*k)$ time.\\
+
+=======
+      \textit{InsertLostPoints} is given two set; the solution set, say $SOL$, so far and a set containing the points that have been skipped, say $LPS$. Now for each point in $LPS$, say the point $p$, the distance is calculated between $p$ and each point in $LPS$. The smallest distance is saved, a decision is made where our point $p$ needs to be inserted and is then inserted.\\
+       The running time of \textit{InsertLostPoint} is determined by the amount of points in $LPS$, say $n$ points, the number of points in $SOL$, say $k$ points and inserting a point into an array. Determining the closest point takes $O(k)$ time, inserting takes $O(k)$ time. These two operations are run in a for loop that takes $O(n)$ time, so the running time of \textit{InsertLostPoint} takes $O(n*(2k)) = O(n*k)$ time.\\
+>>>>>>> .r326
+       \emph{Note: Because of the nature of this function, the solution set will probably be bigger than the set of points that still need to be inserted. This makes this function mostly dependent on the number of points already inserted. The worst case scenario would have both sets of equal size, taking $O(n^{2})$ time.}
+
+  \section{Make Open Curve}
+  \label{sec:make_open_curve}
+<<<<<<< .mine
+=======
+    \textit{MakeOpenCurve} is used to find and create the opening of an open curve. It does so by receiving a closed curve, then looking for the longest curve (and the lexicographic smallest of it's end points) and then reordering the set.
+>>>>>>> .r326
+
+<<<<<<< .mine
+
+    \emph{MakeOpenCurve} is used to find and create the opening of an open curve. It does so by receiving a closed curve, then looking for the longest curve (and the lexicographic smallest of it's end points) and then reordering the set. 
+=======
+>>>>>>> .r326
+
+    \subsection{Definitions}
+    \label{sub:moc_definitions}
+      \begin{definition} \label{def:moc}
+        The opening of an Open Curve is the ``edge'' between two points that is the longest of all edges.
+      \end{definition}
+
+    \subsection{Functional Description}
+    \label{sub:moc_functional_description}
+
+<<<<<<< .mine
+      The array $Points$ that has already been ordered to have the right curve is given to \emph{MakeOpenCurve}. For each point in the array $Points$ the distance between two consecutive points is determined and compared to the last distance. The index of the starting point of the longest edge is saved, say the point $lp$. \\
+      If $lp$ is the last point in the array $Points$, we have the correct open curve. If it is not the last point the array must be re-ordered. The lexicographic smallest of the two endpoints is determined. If this is the first point in the array $Points$, then the lexicographic smallest is put into the array $results$ followed by the second end point
+=======
+      The array $Points$ that has already been ordered to have the right curve is given to \textit{MakeOpenCurve}. For each point in the array $Points$ the distance between two consecutive points is determined and compared to the last distance. The index of the starting point of the longest edge is saved, say the point $lp$. \\
+      If $lp$ is the last point in the array $Points$, we have the correct open curve. If it is not the last point the array must be re-ordered. The lexicographic smallest of the two endpoints is determined
+>>>>>>> .r326
+
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:moc_proof}
+
+    \subsection{Running Time Analysis}
+    \label{sub:moc_running_time_analysis}
+
+  \section{Improved Nearest Neighbor}
+  \label{sec:improved_nearest_neighbor}
+
+    \subsection{Definitions}
+    \label{sub:inn_definitions}
+      \begin{definition} \label{def:inn}
+
+      \end{definition}
+
+    \subsection{Functional Description}
+    \label{sub:inn_functional_description}
+
+
+    \subsubsection{Proof of Correctness}
+    \label{ssub:inn_proof}
+
+    \subsection{Running Time Analysis}
+    \label{sub:inn_running_time_analysis}
+
+
+  \section{Test Results}
+  \label{sec:inn_test_results}
+    \subsection{Running time}
+        The results for our \textit{ImprovedNearestNeighbor} are again determined by running the experiments on a HP Compaq 8510w Laptop with the following specifications:\\
+        2,4 GHz Intel Core 2 Duo processor T7700\\
+        2 GB memory.\\
+        The results are given in Table 4.1 and Figure 4.2.
+
+        \begin{center}
+          \begin{tabular}{|p{2.5cm}|p{2.5cm}|}
+              \hline
+              Points & Seconds\\
+              \hline
+              \hline
+              500 & 0.015\\
+              \hline
+              1000 & 0.031\\
+              \hline
+              1500 & 0.041\\
+              \hline
+              2000 & 0.078\\
+              \hline
+              5000 & 0.390\\
+              \hline
+              10000 & 1.747\\
+              \hline
+              15000 & 5.008\\
+              \hline
+              20000 & 8.783\\
+              \hline
+              30000 & 20.951\\
+              \hline
+              40000 & 25.053\\
+              \hline
+              50000 & 53.991\\
+              \hline
+              60000 & 71.230\\
+              \hline
+              80000 & 139.543\\
+              \hline
+          \end{tabular}
+          \label{tab:inn_runningtime}\\
+          Table 4.1: Results of testing \textit{ImprovedNearestNeighbor}
+        \end{center}
+
+          \begin{center}
+            \includegraphics[scale = 0.7]{3ImprovedNearestNeighbor/innRuntimeGraph.png}\\
+            Figure 4.2: Graph of \textit{ImprovedNearestNeighbor}'s Running Time
+            \label{fig:inn_runnningtime}
+          \end{center}
+
+      \noindent The results of the running time are what we expected, again it looks like the algorithm is $O(n)$, especially when we introduce the $n^2$ trend line. It may not be that obvious as it was the case with \textit{NearestNeighbor} and \textit{DirectedNearestNeighbor} but we still can conclude using the graph that \textit{ImprovedNearestNeighbor} is $O(n))$.
+      If we compare the algorithm to \textit{NearestNeighbor} and \textit{DirectedNearestNeighbor}, we see that is slower than \textit{NearestNeighbor}, which is obvious of course since it uses \textit{NearestNeighbor} with an extra function, and faster than \textit{DirectedNearestNeighbor}.\\
+
+    \subsection{Correct output}
+    There were a couple of things that went better with \textit{ImprovedNearestNeighbor} than with \textit{NearestNeighbor}. For example the heart of 256 points, which went completely right. Another thing that works much better in Improved Nearest is the following closed curve, when we draw a normal circle with one point at the outside \textit{NearestNeighbor} would fail but the new \textit{ImprovedNearestNeighbor} does not. This is because of the new functionality to insert points at the end, which checks for multiple things which would not be correct if they occur. The fact that the reconstruction of this type of curve has improved is good, since a similar type of curve can be found in several other test-cases we ran. See Figure 4.3 to see an example.\\
+
+          \begin{center}
+            \includegraphics[scale = 0.7]{3ImprovedNearestNeighbor/innPointCirkel.png}\\
+            Figure 4.3: Left: Nearest Neighbor Algorithm. Right: Improved Nearest Neighbor Algorithm
+            \label{fig:inn_pointcircle}
+          \end{center}
+
+   \subsection{Conclusion} 

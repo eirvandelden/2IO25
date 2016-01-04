@@ -1,0 +1,67 @@
+\subsection{Improved Nearest Neighbor}
+\label{sub:improved_nearest_neighbor}
+Although the \textit{DirectedNearestNeighbor} gave better results in some test-cases (especially self-intersecting curves) than \textit{NearestNeighbor}, there were a lot of test-cases in which the resulting figure was far worse than the one \textit{NearestNeighbor} constructed. Therefore we continued to improve \textit{NearestNeighbor} and we use \textit{DirectedNearestNeighbor} only for the self-intersecting curve reconstruction.\\
+\textit{ImprovedNearestNeighbor} relies on two new functions: the first one adds the functionality of inserting points at the end, this way there are no connections between a point on one side of the canvas and one on the other side, the second is used for making open curves. This deletes the longest edge in a closed curve and reorders the set of points accordingly.\\
+A more detailed description of these two functions is given below, followed by a description of \textit{ImprovedNearestNeighbor}\\
+
+ \noindent\textbf{Lexicographic Smallest}\\
+    We again need to look for the lexicographic smallest point in the point cloud and thus reuse.\\
+
+  \noindent\textbf{Insert Lost Points}\\
+    For \textit{ImprovedNearestNeighbor} we also need to insert lost points.\\
+
+  \noindent\textbf{Make Open Curve}\\
+    For creating an open curve we use the following definition:\\
+    \begin{definition} \label{def:moc}
+        To create an open curve the edge between two points that is the longest of all edges in a closed curve has to be removed.
+    \end{definition}
+    \textit{MakeOpenCurve} is used to find and create the opening in a closed curve. The array $Points$ that has already been ordered by \textit{ImprovedNearestNeighbor}, and thus is a closed curve, is given to \textit{MakeOpenCurve}. For each point in the array $Points$ the distance between two consecutive points is determined and compared to the last distance. The index of the starting point of the longest edge is saved, say the point $lp$. \\
+    If $lp$ is the last point in the array $Points$, we have the correct open curve. If it is not the last point the array must be reordered. The lexicographic smallest of the two endpoints is determined. \\
+    If this not the last point in the array, but the lexicographic smallest endpoint is the first point in the array $Points$, then the lexicographic smallest is put into the array $results$ followed by the second end point. Then all other points are added in reverse order.\\
+    If $lp$ is not the last point, and the lexicographic smallest endpoint is not the first point, all points from and including the endpoints are added to the front of the $results$ array. Then the points from start to the opening are added to the $results$ array, which is then returned.\\
+    This function is only called when the input curve-type is an open curve.\\
+    To show \textit{MakeOpenCurve} actually makes an open curve the following proof is given:\\
+    \textit{ImprovedNearestNeighbor} first makes a closed curve of the input points, then \textit{MakeOpenCurve} measures the length of all edges and the longest one is removed. There always exists a longest edged, so after \textit{MakeOpenCurve} has removed this edge, an open curve is created.\\
+
+    \noindent\textbf{Improved Nearest Neighbor}\\
+        This function is an improvement on the original Nearest Neighbor and is used for closed curves.\\
+        The function first determines the \textit{LexicographicSmallest} point $p$. Then this \emph{ImprovedNearestNeighbor} starts to search for the point $q$ with the smallest distance, to $p$ the starting point. If $q$ is not the starting point it adds it to list of points $Result$. $p$ becomes $q$ and from point $q$ with the smallest distance to $p$ is determined and added into the $Result$ list if $q$ is not the starting point. This is repeated until the starting point is seen again. Lastly there is a check to see if there are any loose points left. If this is the case, the function \textit{InsertLostPoints} is called with the parameters $P$ and the $Result$ list to insert the lost point. \\
+
+        \begin{center}
+        \begin{tabular}{l l l}
+           & \textbf{ImprovedNearestNeighbor}$(P)$                           & \\
+         01 & $ls,p \gets $ \textbf{Lexicographic-}                          &\\
+            & ~~\textbf{Smallest}$(P),P[ls]$                                & $O(n)$ \\
+         02 & $start, loopcount \gets p,0$                                   &  \\
+         03 & \textbf{repeat}                                                & $O(n^{2})$ \\
+         04 & \qquad $loopcount \gets$                                        & \\
+            & \qquad ~~$loopcount +1$                                            & \\
+         05 & \qquad $P \gets P \backslash \{ p\}$                            & \\
+         06 & \qquad \textbf{If} $loopcount = 5$ \textbf{then}               & \\
+         07 & \qquad \qquad $P \gets P \cup \{ start\}$                          &  \\
+         08 & \qquad $q,d \gets p, \infty$                                   &\\
+         09 & \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$          & $O(n)$\\
+         10 & \qquad \qquad $c \gets d(p,j)$                                 & \\
+         11 & \qquad \qquad \textbf{if} $c < d$ \textbf{then}                & \\
+         12 & \qquad \qquad \qquad $d,q \gets c,P[j]$                        & \\
+         13 & \qquad \textbf{if} $q \neq start$ \textbf{then}                & \\
+         14 & \qquad \qquad $Result \gets$                                   &\\
+            & \qquad \qquad ~~$Result \cup \{q\}$                 & \\
+         15 & \qquad $p \gets q$                                             & \\
+         16 & \textbf{until} $p = start$                                     & \\
+         17 & \textbf{if} $|P| > 0$ \textbf{then}                            & \\
+         18 & \qquad \textbf{Insert-}                                       & \\
+            & \qquad ~~\textbf{LostPoints}$(P, Result)$                  & $O(n^{2})$\\
+         \hline
+         & \qquad\qquad\qquad\qquad\textbf{Total:} & $O(n^{2})$
+         \end{tabular} \\
+         Figure 2.3: Pseudo code for \textit{ImprovedNearestNeighbor}
+         \end{center}
+    \noindent\textbf{Proof of Correctness}\\
+        \textit{To prove:} \textit{ImprovedNearestNeighbor} makes a closed curve.\\
+        \textit{ImprovedNearestNeighbor} uses the function \textit{LexicographicSmallest} to determine the starting point, then when the input curve-type is closed, it makes a curve by using \textit{NearestNeighbor}. After the curve is created, it calls \textit{InsertLostPoints} to insert points that are skipped by \textit{NearestNeighbor}. From Definition~\ref{def:ilp} we know that after \textit{InsertLostPoints} is finished no lost points are left and inserted on the correct place in the solution.
+        So \textit{ImprovedNearestNeighbor} makes one closed curve of all input points.\\
+
+    \noindent\textbf{Running Time Analysis}\\
+    	The analysis of \textit{ImprovedNearestNeighbor} bears much resemblance to that of \textit{NearestNeighbor}. Line 1 finds the lexicographic smallest point, taking $O(n)$ time. Line 7 has a for loop, going through the remainder of points. The contents of the loop all take constant time, so the loop itself takes $O(n)$. The for loop is included in the repeat until loop on line 3, which, in the worst case, loops through all points. Since the running time of the body of this repeat until loop is $O(n)$, and it loops at most $n$ times, the total running time of this loop is $O(n^2)$. Now, the only real difference with \textit{NearestNeighbor} is the addition of the \textit{InsertLostPoints} function, which has a running time of $O(n^2)$. (Note that we proved this before.) The total running time is therefore:
+		$O(n) + O(n^{2}) + O(n^{2}) = O(n^{2})$ \\

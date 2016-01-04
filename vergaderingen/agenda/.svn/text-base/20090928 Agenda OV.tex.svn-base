@@ -1,0 +1,132 @@
+%
+%  untitled
+%
+%  Created by Etienne van Delden on 2009-03-31.
+%  Copyright (c) 2009 __MyCompanyName__. All rights reserved.
+%
+\documentclass[a4paper]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+
+% Setup for fullpage use
+%\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+%\usepackage{fancyhdr}
+\usepackage{hyperref}
+
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+%\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+%\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+\title{Agenda OGO 2.1 Vergadering 2009-2010}
+\date{}
+
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\maketitle
+
+\section{\underline{Opening Vergadering}} % (fold)
+\label{sec:opening_vergadering}
+\begin{tabular}{ll}
+  Datum:      & 28-09-2009\\
+  Begin tijd: & 14:15\\
+  Voorzitter: & Etienne van Delden\\
+  Notulist:   & Jan\^ot Sijen\\
+  \multicolumn{2}{l}{Aanwezigheid leden}
+\end{tabular}
+
+
+% section opening_vergadering (end)
+
+\section{\underline{Vaststelling van de Agenda}} % (fold)
+\label{sec:vaststelling_van_de_agenda}
+
+% section vaststelling_van_de_agenda (end)
+
+%\section{\underline{Verslag vorige vergadering}} % (fold)
+%\label{sec:bespreking_van_de_vorige_notulen}
+%
+%% section bespreking_van_de_vorige_notulen (end)
+
+\section{\underline{Mededelingen}} % (fold)
+\label{sec:mededelingen}
+% section mededelingen (end)
+
+\section{\underline{Correspondentie}} % (fold)
+\label{sec:post_in_uit}
+
+% section post_in_uit (end)
+
+\section{\underline{Update Closed Curve Algorithm}} % (fold)
+\label{sec:feedback_werkplan}
+
+% section feedback_werkplan (end)
+
+\section{\underline{Voortgang OGO}} % (fold)
+\label{sec:voortgang_ogo}
+    
+% section voortgang_ogo (end)
+
+\section{\underline{Planning komende week}} % (fold)
+\label{sec:planning_komende_week}
+
+% section planning_komende_week (end)
+
+\section{\underline{Rondvraag}} % (fold)
+\label{sec:rondvraag}
+
+% section rondvraag (end)
+
+\section{\underline{Punten voor de volgende vergadering}} % (fold)
+\label{sec:punten_voor_de_volgende_vergadering}
+
+% section punten_voor_de_volgende_vergadering (end)
+
+\section{\underline{Sluiting}} % (fold)
+\label{sec:sluiting}
+\small{\emph{Logboek invullen!}}
+% section sluiting (end)
+
+\end{document}

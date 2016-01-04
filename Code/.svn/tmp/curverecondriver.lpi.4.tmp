@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="7"/>
+    <General>
+      <Flags>
+        <LRSInOutputDirectory Value="False"/>
+      </Flags>
+      <MainUnit Value="0"/>
+      <TargetFileExt Value=""/>
+      <ActiveEditorIndexAtStart Value="0"/>
+    </General>
+    <VersionInfo>
+      <ProjectVersion Value=""/>
+      <Language Value=""/>
+      <CharSet Value=""/>
+    </VersionInfo>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPackages>
+    <Units Count="21">
+      <Unit0>
+        <Filename Value="curverecondriver.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="curverecondriver"/>
+        <CursorPos X="41" Y="17"/>
+        <TopLine Value="1"/>
+        <EditorIndex Value="7"/>
+        <UsageCount Value="83"/>
+        <Loaded Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="mainform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="mainform"/>
+        <CursorPos X="14" Y="537"/>
+        <TopLine Value="531"/>
+        <EditorIndex Value="0"/>
+        <UsageCount Value="83"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="curverecon.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CurveRecon"/>
+        <CursorPos X="1" Y="240"/>
+        <TopLine Value="225"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="83"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../../../usr/lib/lazarus/lcl/include/control.inc"/>
+        <CursorPos X="1" Y="2096"/>
+        <TopLine Value="2071"/>
+        <UsageCount Value="9"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../../usr/lib/lazarus/lcl/include/buttoncontrol.inc"/>
+        <CursorPos X="1" Y="58"/>
+        <TopLine Value="33"/>
+        <UsageCount Value="9"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="../../../usr/lib/lazarus/lcl/include/buttons.inc"/>
+        <CursorPos X="1" Y="241"/>
+        <TopLine Value="217"/>
+        <UsageCount Value="9"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../../usr/lib/lazarus/lcl/include/wincontrol.inc"/>
+        <CursorPos X="1" Y="4749"/>
+        <TopLine Value="4724"/>
+        <UsageCount Value="9"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="../../../usr/lib/lazarus/lcl/include/customcheckbox.inc"/>
+        <CursorPos X="1" Y="126"/>
+        <TopLine Value="102"/>
+        <UsageCount Value="9"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="algorithms.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Algorithms"/>
+        <CursorPos X="28" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="76"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="tmp_nnsearch.pas"/>
+        <UnitName Value="tmp_nnsearch"/>
+        <CursorPos X="16" Y="83"/>
+        <TopLine Value="31"/>
+        <UsageCount Value="9"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="backtracking.pas"/>
+        <UnitName Value="Backtracking"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="33"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="backtrackingofzo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="BacktrackingOfzo"/>
+        <CursorPos X="15" Y="112"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="50"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="nearestneighbor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NearestNeighbor"/>
+        <CursorPos X="5" Y="43"/>
+        <TopLine Value="20"/>
+        <EditorIndex Value="6"/>
+        <UsageCount Value="41"/>
+        <Loaded Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="directednearestneighbor.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="DirectedNearestNeighbor"/>
+        <CursorPos X="16" Y="142"/>
+        <TopLine Value="132"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="39"/>
+        <Loaded Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="../../../../../usr/share/fpcsrc/2.2.4/rtl/objpas/sysutils/sysstrh.inc"/>
+        <CursorPos X="10" Y="164"/>
+        <TopLine Value="149"/>
+        <UsageCount Value="10"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="../../../../../usr/share/fpcsrc/2.2.4/rtl/objpas/math.pp"/>
+        <UnitName Value="math"/>
+        <CursorPos X="2" Y="114"/>
+        <TopLine Value="2360"/>
+        <UsageCount Value="11"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="nearestneighborgamma.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="NearestNeighborGamma"/>
+        <CursorPos X="3" Y="176"/>
+        <TopLine Value="148"/>
+        <EditorIndex Value="5"/>
+        <UsageCount Value="35"/>
+        <Loaded Value="True"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="upto5.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UpTo5"/>
+        <CursorPos X="46" Y="52"/>
+        <TopLine Value="52"/>
+        <EditorIndex Value="4"/>
+        <UsageCount Value="34"/>
+        <Loaded Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="improvednearestneighbor.pas"/>
+        <UnitName Value="ImprovedNearestNeighbor"/>
+        <CursorPos X="25" Y="79"/>
+        <TopLine Value="69"/>
+        <UsageCount Value="20"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="../../../../../usr/lib/lazarus/lcl/include/control.inc"/>
+        <CursorPos X="1" Y="2095"/>
+        <TopLine Value="2079"/>
+        <UsageCount Value="13"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="improvednearestneighbor2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ImprovedNearestNeighbor2"/>
+        <CursorPos X="44" Y="11"/>
+        <TopLine Value="1"/>
+        <EditorIndex Value="2"/>
+        <UsageCount Value="30"/>
+        <Loaded Value="True"/>
+      </Unit20>
+    </Units>
+    <JumpHistory Count="29" HistoryIndex="28">
+      <Position1>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="204" Column="29" TopLine="190"/>
+      </Position1>
+      <Position2>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="95" Column="10" TopLine="80"/>
+      </Position2>
+      <Position3>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="495" Column="92" TopLine="480"/>
+      </Position3>
+      <Position4>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="532" Column="19" TopLine="517"/>
+      </Position4>
+      <Position5>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="539" Column="34" TopLine="517"/>
+      </Position5>
+      <Position6>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="30" Column="22" TopLine="29"/>
+      </Position6>
+      <Position7>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="56" Column="20" TopLine="29"/>
+      </Position7>
+      <Position8>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="337" Column="3" TopLine="333"/>
+      </Position8>
+      <Position9>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="264" Column="3" TopLine="262"/>
+      </Position9>
+      <Position10>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="348" Column="54" TopLine="333"/>
+      </Position10>
+      <Position11>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="62" Column="32" TopLine="62"/>
+      </Position11>
+      <Position12>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="272" Column="5" TopLine="237"/>
+      </Position12>
+      <Position13>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="357" Column="10" TopLine="347"/>
+      </Position13>
+      <Position14>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="88" Column="28" TopLine="72"/>
+      </Position14>
+      <Position15>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="358" Column="15" TopLine="343"/>
+      </Position15>
+      <Position16>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="669" Column="5" TopLine="639"/>
+      </Position16>
+      <Position17>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="682" Column="19" TopLine="659"/>
+      </Position17>
+      <Position18>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="666" Column="33" TopLine="647"/>
+      </Position18>
+      <Position19>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="368" Column="17" TopLine="352"/>
+      </Position19>
+      <Position20>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="273" Column="12" TopLine="253"/>
+      </Position20>
+      <Position21>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="88" Column="25" TopLine="73"/>
+      </Position21>
+      <Position22>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="273" Column="24" TopLine="258"/>
+      </Position22>
+      <Position23>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="279" Column="13" TopLine="258"/>
+      </Position23>
+      <Position24>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="666" Column="24" TopLine="666"/>
+      </Position24>
+      <Position25>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="362" Column="66" TopLine="353"/>
+      </Position25>
+      <Position26>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="111" Column="34" TopLine="96"/>
+      </Position26>
+      <Position27>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="569" Column="45" TopLine="549"/>
+      </Position27>
+      <Position28>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="179" Column="29" TopLine="157"/>
+      </Position28>
+      <Position29>
+        <Filename Value="mainform.pas"/>
+        <Caret Line="564" Column="3" TopLine="554"/>
+      </Position29>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="8"/>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="2">
+      <Item1>
+        <Name Value="ECodetoolError"/>
+      </Item1>
+      <Item2>
+        <Name Value="EFOpenError"/>
+      </Item2>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

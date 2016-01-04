@@ -1,0 +1,95 @@
+%
+%  untitled
+%
+%  Created by Etienne van Delden on 2010-01-11.
+%  Copyright (c) 2010 __MyCompanyName__. All rights reserved.
+%
+\documentclass[a4paper,twoside,11pt]{article}
+
+% Use utf-8 encoding for foreign characters
+\usepackage[utf8]{inputenc}
+
+% Setup for fullpage use
+\usepackage{fullpage}
+
+% Uncomment some of the following if you use the features
+%
+% Running Headers and footers
+\usepackage{fancyhdr}
+
+% Use colored links
+\usepackage[pdftex,colorlinks]{hyperref}
+
+% Multipart figures
+%\usepackage{subfigure}
+
+% More symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+
+% Surround parts of graphics with box
+\usepackage{boxedminipage}
+
+% Package for including code in the document
+\usepackage{listings}
+
+% If you want to generate a toc for each chapter (use with book)
+\usepackage{minitoc}
+
+% This is now the recommended way for checking for PDFLaTeX:
+\usepackage{ifpdf}
+
+%\newif\ifpdf
+%\ifx\pdfoutput\undefined
+%\pdffalse % we are not running PDFLaTeX
+%\else
+%\pdfoutput=1 % we are running PDFLaTeX
+%\pdftrue
+%\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+\title{Curve Reconstruction}
+\author{E.I.R. van Delden (0618959) \qquad T. Hermans (0664881) \qquad T. van der Hoek (0655570)\\ J. Sijen (0652478) \qquad R. Wolffensperger (0612853)}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\maketitle
+
+
+
+\include{introduction}
+\include{algorithm}
+\include{evaluation}
+\include{conclusion}
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+  \bibitem{algorithms}  
+    T.H. Cormen, C.E. Leiserson, R.L. Rivest and C. Stein. 
+    \textit{Introduction to Algorithms} (2$^{nd}$ edition). 
+    MIT Press, 2001.
+  \bibitem{geometry}
+    M. de Berg. 
+    \textit{Computational Geometry: Algorithms and Applications} (3$^{rd}$ edition). 
+    Springer, 2008.
+  \bibitem{kd-trees}
+    Andrew Moore. 
+    Efficient Memory-based Learning for Robot Control. 
+    \textit{An intoductory tutorial on kd-trees}. 
+    pages 6-1 - 6-18, 1991.
+\end{thebibliography}
+
+
+
+\end{document}

@@ -1,0 +1,30 @@
+\section{Introduction}
+<<<<<<< .working
+\label{cha:Introduction}
+In this paper we are going to look at the problem of reconstructing 2D curves from a given set of points. This is an important subject in today's world; 2D Scanners are being used for a wide variety of applications, most commonly for making 2D models for archiving purposes. To make such a 2D model these scanners measure a great number of points on the surface of an object, these points together are called point clouds. On such a point cloud an algorithm is applied to reconstruct the object to make the actual 2D model.
+The basic algorithm of our implementation of 2D-reconstruction is \textit{NearestNeighbor} (see chapter~\ref{cha:nearest_neighbor}). We will show that this algorithm in it's first form is not enough to give a good reconstruction of a 2D figure, so we extended this algorithm with some data structures (chapters~\ref{cha:directed_nearest_neighbor}, \ref{cha:improved_nearest_neighbor} and \ref{cha:up to five sort}).\\ \\
+=======
+\label{sec:Introduction}
+In today's world 3D Scanners are being used for a wide variety of applications, most commonly for making 3D models for archiving purposes, or to use in the production of video games or movies.
+To make such a 3D model these scanners measure a great number of points on the surface of an object, these points together are called point clouds. On such a point cloud an algorithm is applied to reconstruct the object to make the actual 3D model.
+2D reconstruction does the same but only in a 2 dimensional form. So the points only consist of a x en y coordinate.
+\\ \\
+In this paper we are going to look at the problem of reconstructing 2D curves from a given set of points. Some examples of known algorithms that do this are: Nearest Neighbor and the Crust Algorithm. Nearest Neighbor searches for the closest point, so if you give the algorithm a set S of points and a query point the result will be the closest point in S to q. The Crust Algorithm uses a combination of voronoi-diagrams and Delaunay triangulation. Most of the other reconstruction algorithms use the same principle.
+>>>>>>> .merge-right.r159
+
+<<<<<<< .working
+\subsection{Overview of this document}
+\label{sec:overview_of_this_document}
+This report has two parts; our algorithms, the basic and improved versions, and a concluding part with both discussions about our visualizer and concluding remarks on the process of implementing a 2D-reconstruction algorithm.\\
+We present each algorithm in its own separate chapter.
+The outline of each algorithm is as follows:
+\begin{itemize}
+    \item Additional used functions
+    \item Needed definitions
+    \item Functional Description with proof of correctness
+    \item Running time analysis
+    \item Experiments to determine practical running time and accuracy
+    \item Conclusions on this algorithm
+\end{itemize} =======
+We have chosen to use a form of the backtracking algorithm.
+Backtracking is a general algorithm that starts making solutions and marks them as possible candidates, when the algorithm notices that a candidate can not come to a valid solution it abandons this candidate. Our other possible ideas (like the use of a kd-tree) of which could lead to a good solution can also be found in this paper. >>>>>>> .merge-right.r159

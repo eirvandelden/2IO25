@@ -1,0 +1,98 @@
+\subsection{Up To Five Sort}
+\label{sub:up to five sort}
+    To make an algorithm suitable for the up-to-5 curves subtask we improved \textit{ImprovedNearestNeighbor}.
+    \textit{UpToFiveSort} uses \textit{ImprovedNearestNeighbor}. We introduced some new functions to support \textit{UpToFiveSort}, these are given below, followed by a description of \textit{UpToFiveSort} itself.\\
+    This algorithm is, as the name suggests, solely used for making up-to-5 curves.\\
+
+  \noindent\textbf{Lexicographic Smallest}\\
+    We again need to look for the lexicographic smallest point in the point cloud and thus reuse.\\
+
+  \noindent\textbf{Insert Lost Points}\\
+    For \textit{UpToFiveSort} we also need to insert lost points.\\
+
+  \noindent\textbf{Find Curve}\\
+       \noindent We introduced this function to find separate curves in the input points. It uses \textit{ImprovedNearestNeighbor} for making closed curves. When it is back at its starting point it outputs the created curve.\\
+        This results in the following definition:\\
+      \begin{definition} \label{def:fc}
+        Given an array $C$ of points, a subset of $C$ or the whole array $C$ (when there's only one curve left in the array) is returned in the right order.
+      \end{definition}
+
+       \noindent This function works just like \textit{ImprovedNearestNeighbor} only it does not use the function \textit{InsertLostPoints} in the end, so for a description of its functionality see \ref{sub:improved_nearest_neighbor}.\\
+       
+       \begin{tabular}{p{0.5cm} p{5.75cm}}
+          & \textbf{UpToFiveSort}$(P)$                                                 \\
+        01 & $i \gets 1$                                                                \\
+        02 & \textbf{while} $|P| > 0$ \textbf{do}                                       \\
+        03 & \quad $Result[i-1] \gets$ \textbf{FindCurve}$(P)$                   \\
+        04 & \quad \textbf{for} $j \gets 0$ \textbf{to} $P[i-1].count-1$ \textbf{do}   \\
+        05 & \quad \quad $p \gets Result[i-1].[j]$                                    \\
+        06 & \quad \quad $P \gets P \backslash \{p\}$                                 \\
+        07 & \quad $i \gets i+1$                                                       \\
+        08 & \textbf{while} $|Result| > 5$ \textbf{do}                                  \\
+        09 & \quad $smallest, smallestdist \gets 0, Result[0].count$                   \\
+        10 & \quad \textbf{for} $i \gets 1$ \textbf{to} $|Result|-1$ \textbf{do}       \\
+        11 & \quad \quad \textbf{if} $Result[i].count < smallestnum$ \textbf{then}    \\
+        12 & \quad \quad \quad $smallest \gets i$                                    \\
+        13 & \quad \quad \quad $smallestnum \gets Result[i].count$                   \\
+        14 & \quad $p,closest \gets Result[smallest].[0],smallest$                     \\
+        15 & \quad $closestdist \gets \infty$                                          \\
+        16 & \quad \textbf{for} $i \gets 0$ \textbf{to} $|Result|-1$ \textbf{do}       \\
+        17 & \quad \quad \textbf{if} $i \neq smallest$ \textbf{then}                  \\
+        18 & \quad \quad \quad $d,q \gets \infty, p$                                 \\
+        19 & \quad \quad \quad \textbf{for} $j \gets 0$ \textbf{to} $Result[i].count$ \textbf{do} \\
+        20 & \quad \quad \quad \quad $c \gets d(Result[i],Result[j])$                \\
+        21 & \quad \quad \quad \quad \textbf{if} $c<d$ \textbf{then}                 \\
+        22 & \quad \quad \quad \quad \quad $d,q \gets c, Result[i].[j]$              \\
+        23 & \quad \quad \quad \textbf{if} $d < closestdist$ \textbf{then} \\
+        24 & \quad \quad \quad \quad $closest,closestdist \gets i,d $\\
+        25 & \quad $Result[closest] \gets$ \textbf{InsertLostPoints}$(Result[smallest],Result[closest])$ \\
+        26 & \quad \textbf{for} $i \gets smallest$ \textbf{to} $|Result| - 2$ \textbf{do}\\
+        27 & \quad \quad $Result[i] \gets Result[i+1]$ \\
+        \hline
+        \multicolumn{2}{c}{\textbf{Total:} $O(n^{2})$}
+        \end{tabular}
+       
+        \begin{center}
+        \begin{tabular}{lll}
+           & \textbf{FindCurve}$(P)$                           & \\
+         01 & $ls,p \gets $ \textbf{LexicograhicSmallest}$(P),P[ls]$         & $O(n)$ \\
+         02 & $Result \gets \{ p\}$                                          & \\
+         03 & $start, loopcount, added \gets p,0,false$                      &  \\
+         04 & \textbf{repeat}                                                & $O(n^{2})$ \\
+         05 & \qquad $loopcount \gets loopcount +1$                          & \\
+         06 & \qquad $P \gets P \backslash \{ p\}$                            & \\
+         07 & \qquad \textbf{if} $(loopcount = 8$ \textbf{or} $|P| = 0)$ \textbf{and not} $toegevoegd$ \textbf{then}               & \\
+         08 & \qquad \qquad $P \gets P \cup \{ start\}$                          &  \\
+         09 & \qquad \qquad $toegevoegd \gets true$                          &\\
+         10 & \qquad $q,d \gets p, \infty$                                   &\\
+         11 & \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$          & $O(n)$\\
+         12 & \qquad \qquad $c \gets d(p,j)$                                 & \\
+         13 & \qquad \qquad \textbf{if} $c < d$ \textbf{then}                & \\
+         14 & \qquad \qquad \qquad $d,q \gets c,P[j]$                        & \\
+         15 & \qquad \textbf{if} $q \neq start$ \textbf{then}                & \\
+         16 & \qquad \qquad $Result \gets Result \cup \{q\}$                 & \\
+         17 & \qquad $p \gets q$                                             & \\
+         18 & \textbf{until} $p = start$                                     & \\
+         \hline
+         \multicolumn{3}{c}{\textbf{Total:} $O(n^{2})$}
+         \end{tabular} \\
+         Figure 2.4: Pseudo code for \textit{FindCurve}
+         \end{center}
+
+    \noindent\textbf{Running Time Analysis of Find Curve}\\
+        \emph{FindCurve} consists of two loops, one that repeats until the starting point is found again, and one that compares the distance between the current point and all the others. All other operations take $O(1)$ time (if statements, compares, assignments). Thus, \emph{FindCurve} runs in $O(n^{2})$.\\
+
+  \noindent\textbf{Up To Five Sort}\\
+    This function finds multiple curves in an array $C$ of points.
+    A variable $P$ is used to store multiple array's of points.
+    \textit{FindCurve} is called to find curves in $C$. When a curve is found, the points used in the curve are removed from $C$ and added in a separate array to $P$. This process continues until $C$ is empty. When more than $5$ points are found the while-loop in our algorithm ensures that the output contains a maximum of $5$ curves. This is done by inserting the small curves on the right spot in the curve which lies closest to them. For all remaining points in $C$ the distance to the curves in $P$ is measured. A remaining point is added to a certain curve when its distance to that curve  is smaller than the distances it has to the other curves. For finding the right spot in the array to add a remaining point the function \textit{InsertLostPoints} is used. This function is called with the remaining points and the curve in which this point needs to be added.\\
+
+   \noindent\textbf{Correctness Proof of \textit{UpToFiveSort}}\\
+        To prove: \textit{UpToFiveSort} outputs no more than $5$ curves.\\
+        Assume \textit{UpToFiveSort} outputs more than $5$ curves. According to the while-loop in \textit{UpToFiveSort} no more than $5$ curves can be outputted, because when it finds more than $5$ curves it inserts the smaller curves in the closest curve.\\
+
+    \noindent\textbf{Running Time Analysis of \textit{UpToFiveSort}}\\
+      \emph{UpToFiveSort} starts by calling \emph{FindCurve} and removing points from A. Each call to \emph{FindCurve} takes $O(n^{2})$ and in the worst case scenario, \emph{FindCurve} is called $\frac{1}{7}n$ times (the smallest curve \emph{FindCurve} can output is of size seven).\\
+      Then, if there are more than 5 curves, the smaller curves are inserted to the bigger curves. This is done by runnning Nearest Neighbor on each curve. This takes $\frac{1}{7}n * n^{2} = O(n^{3})$ time.\\
+      These two loops are run in sequence, so the worst case running time of \emph{UpToFiveSort} is $O(n^{3})$.
+

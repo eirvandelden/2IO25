@@ -1,0 +1,159 @@
+\section{Description of the algorithms}
+\label{sec:Description}
+
+    In this section we present the description of the algorithms we have used to eventually find the algorithm that gives a good curve for the set of given points.\\
+
+\subsection{Lexicographic Smallest}
+\label{ref:lexicographicsmallest}
+\subsubsection{Definitions}
+    \begin{definition} \label{def:lexicographicsmallest}
+      The Lexicographic Smallest algorithm returns from a set $S$ with $n$ points the lexicographic smallest point of $S$.
+    \end{definition}
+    Given a set $S$, the Lexicographic Smallest algorithm compares all the x-co\"ordinates of the points in $S$ and keeps track of the smallest until now. When there are two x-co\"ordinates with the same value, the point with the smaller y-co\"ordinate becomes the lexicographic smallest.\\ When all points are processed, the lexicographic smallest point of $S$ is found.
+
+\subsubsection{Functional description}
+    For the given set $S$ of $n$ points, the algorithm starts by selecting the first point in $S$ and compares its x-co\"ordinate with the x-co\"ordinate of the other points in $S$, until a smaller x-co\"ordinate is found. This point becomes the new lexicographic smallest and the algorithm continues comparing moving right of this point in the array.\\
+    When in a comparison the two x-co\"ordinates of the two points are equal, the point with the smaller y-co\"ordinate becomes the lexicographic smallest.\\
+    When all $n$ points are processed, the index of the lexicographic smallest point is returned.
+
+\subsubsection{Running time analysis}
+    As follows from the functional description, the algorithm processes each point exactly once.\\
+    So the running time is $O(n)$.
+
+\subsection{Nearest Neighbor}
+\label{ref: nearestneighbor}
+    We first tried to solve the reconstruction of the curve with only a Nearest Neighbor algorithm.\\
+    We start by giving some definitions, followed by a functional description of the algorithm, and finally a running time analysis.
+
+\subsubsection{Definitions}
+    
+    \begin{definition} \label{def:nearestneighbor}
+      The Nearest Neighbor algorithm returns for $n$ input points the nearest neighbor of $n-1$ points.
+    \end{definition}
+    Given a set $S$ with $n$ points and the lexicographic smallest point $p$ of $S$, the Nearest Neighbor algorithm begins with removing $p$ from $S$ and calculates the distances between this point and the other points in $S$ and keeps track of the smallest processed until now.\\ The point $q$ with the smallest distance to $p$ becomes the nearest neighbor of $p$ and is removed from $S$.
+    Then the algorithm computes the nearest neighbor of $q$, say $r$, in the same way as for $p$.\\
+    This goes on until the nearest neighbor of the $n-1^{th}$ point is processed; the nearest neighbor of this point is the only point left in set $S$: the $n^{th}$ point.\\
+    So Nearest-Neighbor returns the nearest neighbor for each of the $n-1$ points in a set of $n$ points.
+
+\subsubsection{Functional description}
+    The Nearest Neighbor Algorithm works as follows:\\
+    We have a array of 1 to n points(called array A) and 1 empty array(called array B) who have the same length.\\
+    We choose the lexicographic smallest point(see \ref{ref:lexicographicsmallest}) and remove this point out of A and place it in B.\\
+    This point will be our starting point. Next we go measure the lengths between this point
+    and all the remaining points in A and we choose the point with the smallest distance to this point. This closest point we will call point x.\\
+    Now that we have found the nearest neighbor of our starting point, we remove x out of A and into B. Now we repeat this process on x, meaning for x we look through all remaining points in A for x's nearest neighbor. This point will be removed from A and added to B. Now x becomes the nearest neighbor of x and we repeat this process until array A is empty and array B is full.
+
+\subsubsection{Running time analysis}
+    \begin{tabular}{l l l}
+    & \textbf{NearestNeighbor}$(P)$                                                &   \\
+    1 & $ls \gets$ \textbf{LexicographicSmallest}$(P)$                                & $O(n)$    \\
+    2 & $p \gets P[ls]$                                                               & $O(1)$    \\
+    3 & \textbf{for} $i \gets 0$ \textbf{to} $|P| - 2$ \textbf{do}                    & $O(n^{2})$  \\
+    4 & \qquad $P \gets P \backslash \{ p \}$                                           & $O(1)$    \\
+    5 & \qquad $d \gets \infty$                                                         & $O(1)$    \\
+    6 & \qquad $q \gets p $                                                             & $O(1)$    \\
+    7 & \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$ \textbf{do}               & $O(n)$    \\
+    8 & \qquad \qquad \textbf{if} \textbf{distance}$(p, P[j]) < d$ \textbf{then}          & $O(1)$    \\
+    9 & \qquad \qquad ~~ $d \gets$ \textbf{distance}$(p, P[j])$                           & $O(1)$    \\
+    10 & \qquad \qquad ~~ $q \gets P[j]$                                                   & $O(1)$    \\
+    11 & \qquad \qquad \textbf{fi}                                                         &           \\
+    12 & \qquad \textbf{od}                                                              &           \\
+    13 & $S \gets S \cup \{ p \}$                                                   & $O(1)$    \\
+    14 & $p \gets q$                                                                   & $O(1)$     \\
+    15 & \textbf{od}                                                                     & \\ \hline \hline
+      &  \qquad \qquad \qquad\qquad\qquad\qquad\qquad \textbf{Total }  & $O(n^{2})$
+   \end{tabular}
+   \\ \\
+   The proof for the running time is of the NearestNeighbor is pretty straight forward. There are only three lines that are not constant time; lines 1, 3 and 7. \\
+<<<<<<< .mine
+   Line 1 uses a function that searches for the lexicographic smallest for its given input set. As proven in section \ref{ref:lexicographicsmallest} this takes $O(n)$.\\
+=======
+   Line 1 uses a function that searches for the lexicographic smallest for its given input set. As proven in section \ref{ref:lexicographicsmallest} this takes $O(n)$ time.\\
+>>>>>>> .r208
+   Line 7 starts a for loop that looks through all remaining elements in the set $P$ looking for the smallest distance between point $j$ and given point $p$. This comparison is done in constant time and does not affect the running time of the for loop. In the first run, this for loop needs to go through the most number of elements, namely $n-1$ elements. The running time of this loop is $O(n)$. \\
+   Line 3 starts the for loop that runs through all elements in the set, minus the last element. Thus, this takes $O(n-1)$. We need to take into account the nested for loop and finding the lexicographic smallest point, this makes the total running time: \\
+   $O(n-1) * O(n) + O(n) =  \\
+   O(n^{2} - n ) + O(n) = \\
+   O(n^{2})$ \\
+   Thus \textbf{NearestNeighbor} runs in $O(n^{2})$.
+
+
+
+
+
+%\subsection{General algorithms and datastructures}
+%\label{sub:general}
+
+%Algorithms in this subsection are used by all four subtasks of the curve reconstruction.\\
+%In each of the algorithms of the subtasks these procedures are called in the process of reconstruction.
+
+
+
+%\subsubsection{
+%Functional Explanation Nearest Neighbor}
+
+%The Working of the Nearest Neighbor(NN) Algorithm goes as follows.\\
+%We have a array of 1 to n points(called array A) and 1 empty array(called array B) who have the same length.\\
+%We choose the lexicographic smallest point(see \ref{ref:lexicographic smallest} ) and remove this point out of A and place it in B.\\
+%This point will be our starting point. Next we go measure the lengths between this point
+%and all the remaining points in A and we choose the point with the smallest distance to this point. This closest point we will call point x.\\
+%Now that we have found the nearest neighbor of our starting point, we remove x out of A and into B. Now we repeat this process on x, meaning for x we look through all remaining points in A for x's nearest neighbor. This point will be removed from A and added to B. Now x becomes the nearest neighbor of x and we repeat this process until array A is empty and array B is full.\\
+
+%\subsubsection{Storing points and NearestNeighbor algorithm}
+%We first tried to solve the reconstruction of the curve with only a NearestNeighbor algorithm, in order to do this we needed an algorithm to store the given set of points efficiently. Therefore, we attempted to implement a kD-Tree (see [3]), because in such a tree you can quickly find the nearest neighbor of a point by traveling down the tree to its leafs. While implementing the kD-Tree, we found out that this was to complex, because there were so many cases you have to take into account. We also got to know that only a NearestNeighbor algorithm does not do the trick, as shown in Figure 1, so we needed more than this.
+%\begin{center}
+%\includegraphics{Description/Figure1}
+%\end{center}
+%To keep things simple we implemented an algorithm of our own to search for the nearest neighbor. This algorithm gets a point from the given set as input an goes through all the remaining points to find the nearest neighbor of the input-point.\\
+%\emph{Running Time:} The running time of this algorithm is $O(n^2)$
+
+%\subsubsection{Checking on intersections}
+%After a curve is (partially) constructed we check on whether or not it contains intersections. In the Open-, Closed- and Up-to-5-curves problems intersections are not allowed, whereas in the Intersection-curve problem at least one intersection has to occur.\\
+%To find intersections we go through all points after a possible solution is computed. We take all the edges and check whether they intersect or not. Depending on which problem you are tackling, a solution is rejected or accepted.\\
+%The algorithm computing whether two edges intersect or not takes constant $(O(n))$ time, because its a sequence of assignments to certain variables.\\
+%We have found this method in [4].\\
+%To further clarify this data structure pseudocode is given in Figure 2.\\
+%It gets four points as input.
+%{\ }\\[5.0cm]
+%\noindent\includegraphics[bb = 50 600 233 242]{Description/pseudoIntersection}
+%{\ }\\[2.0cm]
+
+%\subsubsection{Backtracking}
+%In addition to the previous algorithms we used backtracking to go through all possible curves made from the given set of points and select the best result out of those curves.\\
+%The most simplistic solution, is to take a starting point and then connect it to the next, by going through all points and connecting the point that is closest by. This will guarantee that you connect all points that are closest to each other. Implementing this can be done via a double for loop and has a running time of $O(n^{2})$\\
+%There are several things undesirable of using this ``simple'' approach.  The running time of this simple approach is $O(n^{2})$ because we go for all points, through all other points to see if it is the closest to another. On a small number of points this might suffice, but not on larger inputs. It also does not guarantee a good solution, sometimes its better to pick a point further away. There is also no checking on intersections, which are prohibited in all curve problems, except for the Intersecting curve problem.\\\\
+%A logical better solution is using a backtracking algorithm with pruning. It uses the same basis, going through all points to make a solution, but can be made to improve on both performance and some of the other issues.\\
+%A backtracking algorithm needs a way to check the current solution and come to the conclusion that this will never be a valid solution. For the closed, open and multi-curve problem a valid solution can be defined as:
+%\begin{quote}
+%  ``A solution where there is no intersection''
+%\end{quote}
+%A valid solution for the intersecting curve problem is the opposite of this definition:
+%\begin{quote}
+%  ``A solution where there is at least one intersection''
+%\end{quote}
+%The check to see if a solution is intersecting in itself is a simple function call to a function \textbf{Intersect} that returns a boolean. This check makes a backtracking algorithm possible.\\
+%Our backtracking algorithm chooses a random point to look next too. We choose a random point instead of the next point in the array, to have a smaller chance that a worst case scenario occurs, helping the running time of our algorithm.\\ \\
+%\emph{Note:} Our definition can be expanded with several more conditions, like the general direction of the next point needs to be roughly the same as what we have so far. This is to prevent a sudden turn, because that point is the closest by. Another condition could be the distance between points, the next point added should not be located much further away than any other point. This is to prevent weird lines in the figure that we would not expect. We will implement these extra conditions, only when we have an implementation of the first and have the time to expand our current algorithm. It would help performance and general look to something we would it expect it to do, but not in a drastic way that we need to implement it.
+%\emph{Running Time:} The running time is determined by the amount of recursive calls. The more pruning excludes, the faster the algorithm. \\
+%For all $n$ points, it looks to all other $(n - 1)$ points. So the worst case scenario will run in $O(n!)$. The real scenario would be faster, because of the random choice of next point.\\
+%The information about backtracking we have found in [5].\\
+%Because this is to slow we need to optimize this algorithm to make it faster. We want to do this by making the backtracking algorithm iterative. We also still have the extended version of the Nearest Neighbor algorithm to fall back to, if we can't make backtracking faster.\\
+
+%\newpage
+%\subsection{Specific algorithms for the four subtasks}
+%Roughly all four specific algorithms are very much alike, therefore a global description of these algorithms is given below. For the up-to-5 curves we first check how many different curves there are, and then call the backtracking function on every one of these curves. The specific algorithms for each subtask can be found in Figures 3 to 6. \\
+%Before we start the backtracking algorithm we first need to determine the lexicographic smallest point and remove it from the given set and put it into a new set \textit{S}. After we have done that we call the backtracking function with $\emptyset$, \textit{P}, $0$ and \textit{S}. The result of the backtracking function will be put in a set \textit{C}. Since the backtracking algorithm could output the set in reversed order, we have to check whether the second point in \textit{C} is the second lexicographic smallest one. If this is not the case we're going to switch the points using a short for-loop to put the points in the right order. We don't have to do this for the Open Curve algorithm since these points already are in the correct order, because from the starting point you can only travel one way in reconstructing the curve. When we're done correcting the order we can return the set \textit{C}.\\
+%In the backtracking algorithm we implemented a function to check whether there are intersections, so for the closed curve, open curve and up-to-5 algorithms we check if this value is false, in the case of the intersecting curves we check if this value is true (since we want at lease one intersection).
+
+%{\ }\\[5.0cm]
+%\noindent\includegraphics[bb = 50 600 233 242]{Description/pseudoClosed}
+%{\ }\\[2.0cm]
+%{\ }\\[5.0cm]
+%\noindent\includegraphics[bb = 50 600 233 242]{Description/pseudoOpen}
+%{\ }\\[2.0cm]
+%{\ }\\[5.0cm]
+%\noindent\includegraphics[bb = 50 600 233 242]{Description/pseudoIntersecting}
+%{\ }\\[2.0cm]
+%{\ }\\[5.0cm]
+%\noindent\includegraphics[bb = 50 600 233 242]{Description/pseudoUp-to-5}
+%{\ }\\[2.0cm]

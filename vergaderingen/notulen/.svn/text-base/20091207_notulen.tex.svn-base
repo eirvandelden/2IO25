@@ -1,0 +1,147 @@
+%
+%  Notulen 07-12-2009
+%  OGO 2.1 Groep 3
+%
+\documentclass[a4paper]{article}
+
+% Packages!
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{boxedminipage}
+\usepackage{listings}
+\usepackage{ifpdf}
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\title{Notulen Vergadering OGO 2.1 Groep 3 2009-2010}
+\date{}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\section{\underline{Opening Vergadering}} % (fold)
+\label{sec:opening_vergadering}
+\begin{tabular}{ll}
+  Datum:      & 07-12-2009\\
+  Begin tijd: & 14:00\\
+  Voorzitter: & Etienne van Delden\\
+  Notulist:   & Jan\^ot Sijen\\
+  & \\
+  Aanwezig:   & Etienne van Delden\\
+              & Tim Hermans\\
+              & Tom van der Hoek\\
+              & Jan\^ot Sijen\\
+              & Robin Wolffensperger\\
+              & Ron Vanderfeesten (tutor)\\
+  Afwezig:    & $\emptyset$ \\
+\end{tabular}
+
+% section opening_vergadering (end)
+\section{\underline{Vaststelling Agenda:}} % (fold)
+\label{sec:vaststellingagenda}
+
+\begin{itemize}
+\item Ron heeft het verslag doorgekeken. (Zie Mededelingen)
+\end{itemize}
+
+% section vaststellingagenda (end)
+
+\section{\underline{Verslag vorige vergadering:}} % (fold)
+\label{sec:verslagvorigevergadering}
+
+\begin{itemize}
+\item Geen opmerkingen.
+\end{itemize}
+
+% section verslagvorigevergadering (end)
+
+\section{\underline{Mededelingen:}} % (fold)
+\label{sec:mededelingen}
+
+\begin{itemize}
+\item Goed en slecht nieuws.
+\item Eerst, slecht nieuws: geen deadline extension.
+\item Goed nieuws: Het verslag is goed!
+\item Het kan nóg beter, maar we zijn netjes te werk gegaan.
+\item Formeel gedeelte is goed, maar af en toe kan er meer uitleg bij.
+\item Ron\'s commentaar is onleesbaar.
+\end{itemize}
+
+% section mededelingen (end)
+
+\section{\underline{Status update OGO:}} % (fold)
+\label{sec:statusupdateogo}
+
+\begin{itemize}
+\item Closed curve is af: improved nearest neighbor.
+\item Open curve: nieuwe functie.
+\item Intersection: directed nearest neighbor (heeft nog werk nodig)
+\item Up to five is af: nearest neighbor met aanpassing voor meerdere curves. (Trein-code)
+\item Console applicatie is af.
+\end{itemize}
+
+% section statusupdateogo (end)
+
+\section{\underline{Planning vandaag:}} % (fold)
+\label{sec:planningvandaag}
+
+\begin{itemize}
+\item Code krijgt voorrang.
+\item Iemand mag over de schouders heen kijken. (Om programmeerfouten te voorkomen.)
+\end{itemize}
+
+% section planningvandaag (end)
+
+\section{\underline{Planning de rest van de week:}} % (fold)
+\label{sec:planningderestvandeweek}
+
+\begin{itemize}
+\item Verslag moet vrijdag af. (11 December)
+\item Woensdag zijn presentaties, zal ongeveer 2 uur duren. (3 groepen presenteren, 20 minuten per groep)
+\item Er moet nog een presentatie gemaakt worden.
+\item Ron heeft liever een slechte presentatie en goed verslag dan andersom.
+\item Etienne vindt presentaties maken leuk.
+\item Robin staat er niet om te springen.
+\item Presentatie is ons \"verkooppraatje\". (Het is amazing! Waarom is het amazing? Hoe werkt het?)
+\item Volgende maandag eindbespreking? (Niet zeker.)
+\end{itemize}
+
+% section planningderestvandeweek (end)
+
+\section{\underline{Rondvraag:}} % (fold)
+\label{sec:rondvraag}
+
+\begin{itemize}
+\item Geen vragen.
+\end{itemize}
+
+% section rondvraag (end)
+
+\section{\underline{Punten voor volgende vergadering:}} % (fold)
+\label{sec:puntenvoorvolgendevergadering}
+
+\begin{itemize}
+\item Error 201 SIGSEGV: Er is geen volgende vergadering.
+\end{itemize}
+
+% section puntenvoorvolgendevergadering (end)
+
+\section{\underline{Sluiting}} % (fold)
+\label{sec:sluiting}
+\small{\emph{Logboeken!}}
+
+% section sluiting (end)
+
+\end{document}

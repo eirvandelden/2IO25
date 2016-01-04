@@ -1,0 +1,146 @@
+%
+%  Notulen 21 September 2009
+%  OGO 2.1 Groep 3
+%
+\documentclass[a4paper]{article}
+
+% Packages!
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{boxedminipage}
+\usepackage{listings}
+\usepackage{ifpdf}
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\title{Notulen Vergadering OGO 2.1 Groep 3 2009-2010}
+\date{}
+
+\begin{document}
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\section{\underline{Opening Vergadering}} % (fold)
+\label{sec:opening_vergadering}
+\begin{tabular}{ll}
+  Datum:      & 21-09-2009\\
+  Begin tijd: & 14:15\\
+  Voorzitter: & Etienne van Delden\\
+  Notulist:   & Jan\^ot Sijen\\
+  & \\
+  Aanwezig:   & Etienne van Delden\\
+              & Tim Hermans\\
+              & Tom van der Hoek\\
+              & Jan\^ot Sijen\\
+              & Robin Wolffensperger\\
+              & Ron Vanderfeesten (tutor)\\
+  Afwezig:    & \emptyset\\
+\end{tabular}
+
+% section opening_vergadering (end)
+
+\section{\underline{Vaststelling Agenda}} % (fold)
+\label{sec:vaststelling_van_de_agenda}
+
+\begin{itemize}
+\item Punten zijn goedgekeurd.
+\end{itemize}
+
+% section vaststelling_van_de_agenda (end)
+
+%\section{\underline{Verslag vorige vergadering}} % (fold)
+%\label{sec:bespreking_van_de_vorige_notulen}
+%
+%% section bespreking_van_de_vorige_notulen (end)
+
+\section{\underline{Mededelingen}} % (fold)
+\label{sec:mededelingen}
+
+\begin{itemize}
+\item Ron heeft de SVN uitgecheckt op zijn computer. Als iets in de SVN staat heeft Ron het ook.
+\item .tex bestanden zijn geen probleem. (Ron houdt er zelfs van.)
+\item Notulen zijn voor Ron leesbaar als ze voor ons leesbaar zijn. Veel tijd eraan besteden is niet vereist.
+\end{itemize}
+
+% section mededelingen (end)
+
+\section{\underline{Correspondentie}} % (fold)
+\label{sec:post_in_uit}
+
+\begin{itemize}
+\item -
+\end{itemize}
+
+% section post_in_uit (end)
+
+\section{\underline{Feedback Werkplan}} % (fold)
+\label{sec:feedback_werkplan}
+
+\begin{itemize}
+\item Heel volledig. Meest uitgebreide werkplan van iedereen!
+\item Opmerking: Implementatie betekent test framework
+\item We gaan dingen tegelijk doen in groepjes van 2 of 3. (Moet nog in werkplan vermeld worden.)
+\item Eindverantwoordelijken waren wel toegekend, maar staan niet in het werkplan?
+\item De printer eet blijkbaar wel eens pagina\'{}s op. Eindverantwoordelijken staan wel in het werkplan.
+\item Closed algoritme v\`{o}\`{o}r alle anderen? Dit is omdat we eerst een algoritme gezamelijk doen, en daarna de anderen tegelijk.
+\end{itemize}
+
+% section feedback_werkplan (end)
+
+\section{\underline{Voortgang OGO}} % (fold)
+\label{sec:voortgang_ogo}
+    
+\begin{itemize}
+\item Triangulations zijn gevoelig voor numerieke imprecisies, dus moeilijk te implementeren. Fouten opsporen hiermee kost veel tijd en moeite.
+\item Er zijn simpelere algoritmes te vinden!
+\end{itemize}
+
+% section voortgang_ogo (end)
+
+\section{\underline{Planning komende week}} % (fold)
+\label{sec:planning_komende_week}
+
+\begin{itemize}
+\item Closed algorithm afmaken.
+\item Preview op het concept-verslag doorsturen naar Ron?
+\item Probeer zo vroeg mogelijk grip te krijgen op de running time.
+\end{itemize}
+
+% section planning_komende_week (end)
+
+\section{\underline{Rondvraag}} % (fold)
+\label{sec:rondvraag}
+
+\begin{itemize}
+\item Geen vragen.
+\end{itemize}
+
+% section rondvraag (end)
+
+\section{\underline{Punten voor de volgende vergadering}} % (fold)
+\label{sec:punten_voor_de_volgende_vergadering}
+
+\begin{itemize}
+\item Feedback op closed curve algoritme. (Indien af.)
+\end{itemize}
+
+% section punten_voor_de_volgende_vergadering (end)
+
+\section{\underline{Sluiting}} % (fold)
+\label{sec:sluiting}
+\small{\emph{Logboek invullen!}}
+
+% section sluiting (end)
+
+\end{document}

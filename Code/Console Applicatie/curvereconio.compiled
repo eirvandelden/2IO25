@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1244095286"/>
+  <Params Value=" -MDelphi -Sah -Cirot -gl -vewnhi -l -Fu/home/jgsijen/Documents/OGO2.1/Pascal/ &quot;-Fu/home/jgsijen/Documents/OGO2.1/Pascal/Console Applicatie/&quot; -Fu. &quot;-o/home/jgsijen/Documents/OGO2.1/Pascal/Console Applicatie/curvereconio&quot; curvereconio.lpr"/>
+</CONFIG>

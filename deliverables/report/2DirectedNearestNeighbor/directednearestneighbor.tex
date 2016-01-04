@@ -1,0 +1,95 @@
+\subsection{Directed Nearest Neighbor}
+\label{sub:directed_nearest_neighbor}
+To improve the nearest neighbor algorithm we will not only search for the nearest neighbor but also look at the direction we are going while constructing the curve, and look for more points in the vicinity. Now it is not always the case that the nearest neighbor of a certain point is chosen, but the point which differs the least in direction from the previous edge from all other points within a certain range.
+Again we begin with giving some functions on which our algorithm relies, such as searching for points and determining the direction, then we give a description of the algorithm itself.\\
+
+ \noindent\textbf{Lexicographic Smallest}\\
+    We again need to look for the lexicographic smallest point in the point cloud and thus reuse.\\
+
+  \noindent\textbf{Find Points In Range}\\
+    \textit{FindPointsInRange} is introduced to find points within a certain range (using the distance of the previous edge and a constant multiplier) from a specific point. The result of this function is used in the function \textit{GiveBestPoint}.
+    \noindent\emph{FindPointsInRange} finds all points which lie in a certain range $\alpha$ and is called with three parameters: one for the range, one for a point, $p$, and one for the array $S$ with all the points that need to be checked. In the function a new array $R$ is defined which is used to store all points in the range. Now, for all points in $S$, the distance between $p$ and a point in $S$, say $x$, is compared to the range. If the distance is smaller than the range, point $x$ is added to $R$. When all points in $S$ are processed, $R$ is returned.\\
+    From this description we can conclude the following definition:\\
+      \begin{definition} \label{def:fpir}
+          Given the range $\alpha$, the point from which to look, say $p$, and the set of points which still need to be processed, say $S$, then for all points in $S$ holds that a point $q$ is returned if and only if $q$ lies within range $\alpha$ from $p$.
+      \end{definition}
+    \noindent\emph{FindPointsInRange} consists of a single for loop that goes through all of its inputs elements. In the for loop is a single if statement, that checks the distance between the given point and the current point. If the current point is within the given range, it is added to the solution.
+    This takes $O(n)$ time.\\
+
+  \noindent\textbf{Give Best Point}\\
+     This function returns the point which, when connected to the current curve, differs the least in direction of the current curve's direction. It is called on a array $S$ of $n$ points, where the first point is called $p$, the second $q$ and the rest $[1,2,3 \ldots Count-2]$. First the angle of the edge between $p$ and $q$, say $\alpha$, is computed, then the angle between $q$ and $1$. This angle, $\beta$, is compared to $\alpha$ and the point $1$ is stored as the best point so far. Now the rest of the points are processed comparing each angle to the one of the best point so far. When all points in $S$ have been checked the best point is returned.\\
+     Our definition of the best point is given below.\\
+      \begin{definition} \label{def:gbp}
+          Given the edge $(p,q)$ and the set $S$, with $S$ being the $n$ points within range $\alpha$ from $q$, point $r$ in $S$ is returned if and only if the angle of the edge $(q,r)$ differs the least from the angle of the preceding edge $(p,q)$. This returned point is called the ``best point''. (All angles are with respect to the x-axis).
+      \end{definition}
+      \noindent \emph{GiveBestPoint} consists of a single loop that goes through all of its inputs elements, and several if statements. \textit{GiveBestPoint} first calculates the angle of it's first line segment than goes into the for loop. The for loop goes through all other points, makes the line segment, calculates the angle and compares it with the current best (and replaces if so). After the for loop it returns the solution.\\
+      Because only the for loop takes longer than constant time, the running time of \textit{GiveBestPoint} is $O(n)$\\
+
+    \noindent\textbf{Insert Lost Points}\\
+        \noindent\emph{InsertLostPoints} inserts all lost points on the best spot in the solution array $S$, which contains the currently connected points in order, and is initially called with an array of lost points, say $B$. For every point in $B$ its nearest neighbor is searched for in array $S$. The index $i$ of each nearest neighbor is stored, the distance between $p$ and $S[i-1]$ is stored in $v$ and the distance between $p$ and $S[i+1]$ in $w$. Next $v$ is compared to $w$, if $v$ is smaller or equal to $w$, $x$ is inserted at $S[i]$ in $S$, else $x$ is inserted on $S[i+1]$ in $S$. After all points are inserted ($B$ is empty) $S$ is returned.\\
+        Our definition of a lost point point is as follows:\\
+        \begin{definition} \label{def:ilp}
+          A lost point is a point that is not in the curve, after using the Nearest Neighbor algorithm.
+        \end{definition}
+        \textit{InsertLostPoints} is given two sets; the solution set, say $SOL$, so far and a set containing the points that have been skipped, say $LPS$. Now for each point in $LPS$, say the point $p$, the distance is calculated between $p$ and each point in $LPS$. The smallest distance is saved, a decision is made where our point $p$ needs to be inserted and is then inserted.\\
+        The running time of \textit{InsertLostPoint} is determined by the amount of points in $LPS$, say $n$ points, the number of points in $SOL$, say $k$ points and inserting a point into an array. Determining the closest point takes $O(k)$ time, inserting takes $O(k)$ time. These two operations are run in a for loop that takes $O(n)$ time, so the running time of \textit{InsertLostPoint} takes $O(n*(2k)) = O(n*k)$ time.\\
+        \emph{Note: Because of the nature of this function, the solution set will probably be bigger than the set of points that still need to be inserted. This makes this function mostly dependent on the number of points already inserted. The worst case scenario would have both sets of equal size, taking $O(n^{2})$ time.}\\
+
+  \noindent\large\textbf{Directed Nearest Neighbor}\\
+        \textit{NearestNeighbor} had a lot of zigzagging in its resulting curve, by adding direction to this algorithm we tried to solve this problem. \textit{DirectedNearestNeighbor} constructs a curve with as least changes of direction as possible, so there's no zigzagging anymore, but a straight line.\\
+        To accomplish this we look in a certain range from a specific points for points and choose the point in that range which differs the least in direction from the current curve.\\
+        In comparison to \textit{NearestNeighbor} (\ref{sub:nearest_neighbor}) one more array $C$, which is initially empty, is used. Finding the first and second point of the solution stays the same and both points are moved from $A$ to $B$. From those two points we calculate the range, which is the distance between them multiplied by a constant $c$. Now the function \textit{FindPointsInRange} is called with three parameters: the range, $\alpha$, the last point in our solution, $p$, and the array $A$. According to Definition~\ref{def:fpir} all points in $A$ which lie within range $\alpha$ from the $p$ are returned. Those points are stored in $C$. If there are less than two points in $C$ the \textit{NearestNeighbor} is called. When there two points or more the two points stored in $B$ are moved to $C$, making sure those points are the first two points in $C$, then \textit{GiveBestPoint} is called with parameter $C$. From Definition~\ref{def:gbp} this function returns the point that, when connected to the current curve, differs the least from the direction of the preceding edge. This point is added to $B$ and deleted from $A$. These steps will be repeated until the point we started from is connected to the curve. Then \textit{InsertLostPoints} is called to insert the skipped/lost points in the curve. When this is done the curve is constructed.
+
+        \begin{center}
+        \begin{tabular}{ll}
+       & \textbf{DirectedNearestNeighbor}$(P)$\\
+        01     & $ls,p,beginpunt \gets $\\
+               & ~~\textbf{LexicograhicSmallest}$(P),P[ls],P[ls]$\\
+        02     & \textbf \textbf{repeat}\\
+        03     & \qquad $P,skip \gets P \backslash \{ p\},false$\\
+        04     & \qquad \textbf{if} $|A| \geq 2$ \textbf{then}\\
+        05     & \qquad \qquad $skip \gets true$\\
+        06     & \qquad \qquad $r \gets \alpha * d(A[|A|-1],A.last)$\\
+        07     & \qquad \qquad $B \gets$\\
+               & \qquad \qquad ~~\textbf{FindPointsInRange}$(P,p,r)$\\
+        08     & \qquad \qquad \textbf{if} $|B| = 0$ \textbf{then}\\
+        09     & \qquad \qquad \qquad $skip \gets false$\\
+        10     & \qquad \qquad \textbf{elseif} $|B| = 1$ \textbf{then}\\
+        11     & \qquad \qquad \qquad $q \gets B[0]$\\
+        12     & \qquad \qquad \textbf{else}\\
+        13     & \qquad \qquad \qquad $B \gets \{A.last\} \cap$\\
+               & \qquad \qquad \qquad ~~$\{A[|A|-1]\} \cup B$\\
+        14     & \qquad \qquad \qquad $q \gets$ \textbf{GiveBestPoint}$(P)$\\
+        15     & \qquad \textbf{if} \textbf{not} $skip$ \textbf{then}\\
+        16     & \qquad \qquad $r,q \gets \infty,p$\\
+        17     & \qquad \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$ \textbf{do}\\
+        18     & \qquad \qquad \qquad $c \gets d(p,P[J])$\\
+        19     & \qquad \qquad \qquad \textbf{if} $c < r$ \textbf{then}\\
+        20     & \qquad \qquad \qquad \qquad  $r,q \gets c, P[j]$\\
+        21     & \qquad $A,p \gets A \cup {q},q$\\
+        22     &\textbf{until} $p = beginpunt$\\
+        23     &  \textbf{if} $|P| > 0$ \textbf{then}\\\
+        24     &  \qquad \emph{InsertLostPoints(P,A)}\\ \hline
+       &  \qquad \qquad \qquad \qquad \textbf{Total } \qquad\qquad$O(n^{2})$
+        \end{tabular}
+        \label{fig:dnn_code}\\
+        Figure 2.2: Pseudocode for \textit{DirectedNearestNeighbor}
+      \end{center}
+
+     \noindent\textbf{Proof of Correctness}\\
+     \textit{To prove:} \textit{DirectedNearestNeighbor} makes a curve with as least changes of direction as possible.
+      For a point in $S$ \textit{DirectedNearestNeighbor} chooses the next point such that it lies with the least change of direction from the edge you came from (see Definition~\ref{def:gbp}). \textit{DirectedNearestNeighbor} does this for all points in $S$, except for the first two points; the first point is found with \textit{LexicographicSmallest} and connected to the second by using \textit{NearestNeighbor}. Because from here on all points are chosen with the least change of direction to its preceding edge, the resulting curve will contain as least changes of direction as possible on the points processed so far. At the last step lost points are inserted at the right spot in the set by the function \textit{InsertLostPoints}. Because they are inserted in between their nearest neighbor and their second nearest neighbor the curve will still contain as least changes of direction as possible when all points are part of the curve.\\
+
+    \noindent\textbf{Running Time}\\
+       The overall running time of \textit{DirectedNearestNeighbor} is determined by three function calls and two loops. We will first explain the factors of consequence, then what situations there are that define the running time.
+       \textit{DirectedNearestNeighbor} uses two loops, the first is a for loop on line 2 and goes through $n-1$ input elements. The second is a repeat loop on line 19 and takes $O(n-1)$ time, but is not run for each iteration, only for the first and last element. \\
+        There are three sub functions that have each have a running time of $O(n)$, \textit{LexicographicSmallest}  \textit{FindPointsInRange} and \textit{GiveBestPoints}. Only \textit{FindPointsInRange} and \textit{GiveBestPoints} are nested in the main for loop and are thus of consequence.\\
+        There are two main scenario's when running \textit{DirectedNearestNeighbor}:\\
+        \begin{itemize}
+          \item We are either looking at the first or the last input element.
+          \item We are processing any other input element.
+        \end{itemize}
+         The first situation is the same as running our first \textit{NearestNeighbor} and is done in $O(n^{2})$, it's the second case that has been changed.\\
+         \textit{FindPointsInRange} is always run in this situation, taking $O(n)$ time. It is followed by an if statement, that calls the function \textit{GiveBestPoint} that also runs in $O(n)$. Finally the function \textit{InsertLostPoints} is called which has a running time of $O(n^{2})$, so the total running time is: \\
+             $O(n) + (O(n-1)*(3O(n))) + O(n^{2}) = O(n) + (O(n^{2} - 3n)) + O(n^{2}) = O(n^{2} - n) + O(n^{2}) = O(n^{2})$ \\ \\
+          Thus, the running time is still $O(n^{2})$. Though, in practice, it will be slightly slower than our first algorithm, because there are three additional function calls of $O(n)$ time, instead of one. 

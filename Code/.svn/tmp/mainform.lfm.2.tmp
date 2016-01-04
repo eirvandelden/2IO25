@@ -1,0 +1,438 @@
+<<<<<<< .mine
+object Form1: TForm1
+  Left = 459
+  Height = 758
+  Top = 22
+  Width = 653
+  ActiveControl = Panel1
+  Caption = 'CurveReconDriver'
+  ClientHeight = 758
+  ClientWidth = 653
+  OnCreate = FormCreate
+  LCLVersion = '0.9.29'
+  object Tekening: TPaintBox
+    Left = 0
+    Height = 653
+    Top = 0
+    Width = 653
+    Align = alClient
+    OnMouseDown = TekeningMouseDown
+    OnMouseMove = TekeningMouseMove
+    OnMouseUp = TekeningMouseUp
+    OnMouseLeave = TekeningMouseLeave
+    OnPaint = TekeningPaint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 105
+    Top = 653
+    Width = 653
+    Align = alBottom
+    ClientHeight = 105
+    ClientWidth = 653
+    TabOrder = 0
+    object LabelOOR: TLabel
+      Left = 8
+      Height = 18
+      Top = 78
+      Width = 189
+      Caption = 'Some points are out of range!'
+      ParentColor = False
+      Visible = False
+    end
+    object LabelAantal: TLabel
+      Left = 512
+      Height = 18
+      Top = 8
+      Width = 58
+      Caption = '0 punten'
+      ParentColor = False
+    end
+    object ButtonClear: TButton
+      Left = 222
+      Height = 23
+      Top = 8
+      Width = 80
+      Caption = 'Clear'
+      OnClick = ButtonClearClick
+      TabOrder = 3
+    end
+    object ButtonNN: TButton
+      Left = 344
+      Height = 23
+      Top = 8
+      Width = 144
+      Caption = 'Nearest Neighbor'
+      Default = True
+      OnClick = ButtonNNClick
+      TabOrder = 4
+    end
+    object ButtonVoegToe: TButton
+      Left = 120
+      Height = 23
+      Top = 8
+      Width = 88
+      Caption = 'Add'
+      OnClick = ButtonVoegToeClick
+      TabOrder = 2
+    end
+    object EditY: TEdit
+      Left = 64
+      Height = 22
+      Top = 8
+      Width = 48
+      TabOrder = 1
+      Text = '0'
+    end
+    object EditX: TEdit
+      Left = 8
+      Height = 22
+      Top = 8
+      Width = 48
+      TabOrder = 0
+      Text = '0'
+    end
+    object CheckBoxClosed: TCheckBox
+      Left = 344
+      Height = 18
+      Top = 41
+      Width = 63
+      Caption = 'Closed'
+      Checked = True
+      State = cbChecked
+      TabOrder = 5
+    end
+    object EditRandom: TEdit
+      Left = 8
+      Height = 22
+      Top = 41
+      Width = 104
+      TabOrder = 6
+      Text = '10'
+    end
+    object ButtonRandom: TButton
+      Left = 120
+      Height = 23
+      Top = 41
+      Width = 88
+      Caption = 'Random'
+      OnClick = ButtonRandomClick
+      TabOrder = 7
+    end
+    object ButtonImport: TButton
+      Left = 222
+      Height = 23
+      Top = 41
+      Width = 80
+      Caption = 'Import...'
+      OnClick = ButtonImportClick
+      TabOrder = 8
+    end
+    object ButtonFit: TButton
+      Left = 222
+      Height = 23
+      Top = 73
+      Width = 80
+      Caption = 'Zoom Fit'
+      OnClick = ButtonFitClick
+      TabOrder = 9
+    end
+    object ButtonDNN: TButton
+      Left = 344
+      Height = 25
+      Top = 73
+      Width = 144
+      Caption = 'Directed NN'
+      OnClick = ButtonDNNClick
+      TabOrder = 10
+    end
+    object ButtonUp: TButton
+      Left = 544
+      Height = 25
+      Top = 44
+      Width = 25
+      Caption = '^'
+      OnClick = ButtonUpClick
+      TabOrder = 11
+    end
+    object ButtonDown: TButton
+      Left = 544
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = 'v'
+      OnClick = ButtonDownClick
+      TabOrder = 12
+    end
+    object ButtonRight: TButton
+      Left = 576
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = '>'
+      OnClick = ButtonRightClick
+      TabOrder = 13
+    end
+    object ButtonLeft: TButton
+      Left = 512
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = '<'
+      OnClick = ButtonLeftClick
+      TabOrder = 14
+    end
+    object ButtonPlus: TButton
+      Left = 616
+      Height = 25
+      Top = 44
+      Width = 25
+      Caption = '+'
+      OnClick = ButtonPlusClick
+      TabOrder = 15
+    end
+    object ButtonMin: TButton
+      Left = 616
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = '-'
+      OnClick = ButtonMinClick
+      TabOrder = 16
+    end
+    object EditAlpha: TEdit
+      Left = 448
+      Height = 22
+      Top = 39
+      Width = 40
+      TabOrder = 17
+      Text = '1.1'
+    end
+  end
+end
+=======
+object Form1: TForm1
+  Left = 970
+  Height = 758
+  Top = 132
+  Width = 653
+  ActiveControl = Panel1
+  Caption = 'CurveReconDriver'
+  ClientHeight = 758
+  ClientWidth = 653
+  OnCreate = FormCreate
+  LCLVersion = '0.9.26.2'
+  object Tekening: TPaintBox
+    Left = 0
+    Height = 653
+    Top = 0
+    Width = 653
+    Align = alClient
+    OnMouseDown = TekeningMouseDown
+    OnMouseMove = TekeningMouseMove
+    OnMouseUp = TekeningMouseUp
+    OnMouseLeave = TekeningMouseLeave
+    OnPaint = TekeningPaint
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 105
+    Top = 653
+    Width = 653
+    Align = alBottom
+    ClientHeight = 105
+    ClientWidth = 653
+    TabOrder = 0
+    object LabelOOR: TLabel
+      Left = 304
+      Height = 20
+      Top = 75
+      Width = 9
+      Caption = '*'
+      Font.Color = clRed
+      Font.Height = -21
+      Font.Name = 'Sans'
+      ParentColor = False
+      ParentFont = False
+      Visible = False
+    end
+    object LabelAantal: TLabel
+      Left = 512
+      Height = 18
+      Top = 8
+      Width = 58
+      Caption = '0 punten'
+      ParentColor = False
+    end
+    object LabelRT: TLabel
+      Left = 8
+      Height = 18
+      Top = 75
+      Width = 92
+      Caption = 'Running time: '
+      ParentColor = False
+      Visible = False
+    end
+    object ButtonClear: TButton
+      Left = 222
+      Height = 23
+      Top = 8
+      Width = 80
+      Caption = 'Clear'
+      OnClick = ButtonClearClick
+      TabOrder = 3
+    end
+    object ButtonNN: TButton
+      Left = 344
+      Height = 23
+      Top = 8
+      Width = 144
+      Caption = 'Nearest Neighbor'
+      Default = True
+      OnClick = ButtonNNClick
+      TabOrder = 4
+    end
+    object ButtonVoegToe: TButton
+      Left = 120
+      Height = 23
+      Top = 8
+      Width = 88
+      Caption = 'Add'
+      OnClick = ButtonVoegToeClick
+      TabOrder = 2
+    end
+    object EditY: TEdit
+      Left = 64
+      Height = 23
+      Top = 8
+      Width = 48
+      TabOrder = 1
+      Text = '0'
+    end
+    object EditX: TEdit
+      Left = 8
+      Height = 23
+      Top = 8
+      Width = 48
+      TabOrder = 0
+      Text = '0'
+    end
+    object CheckBoxClosed: TCheckBox
+      Left = 344
+      Height = 20
+      Top = 41
+      Width = 65
+      Caption = 'Closed'
+      Checked = True
+      State = cbChecked
+      TabOrder = 5
+    end
+    object EditRandom: TEdit
+      Left = 8
+      Height = 23
+      Top = 41
+      Width = 104
+      TabOrder = 6
+      Text = '10'
+    end
+    object ButtonRandom: TButton
+      Left = 120
+      Height = 23
+      Top = 41
+      Width = 88
+      Caption = 'Random'
+      OnClick = ButtonRandomClick
+      TabOrder = 7
+    end
+    object ButtonImport: TButton
+      Left = 222
+      Height = 23
+      Top = 41
+      Width = 80
+      Caption = 'Import...'
+      OnClick = ButtonImportClick
+      TabOrder = 8
+    end
+    object ButtonFit: TButton
+      Left = 222
+      Height = 23
+      Top = 73
+      Width = 80
+      Caption = 'Zoom Fit'
+      OnClick = ButtonFitClick
+      TabOrder = 9
+    end
+    object ButtonDNN: TButton
+      Left = 344
+      Height = 25
+      Top = 73
+      Width = 144
+      Caption = 'Directed NN'
+      OnClick = ButtonDNNClick
+      TabOrder = 10
+    end
+    object ButtonUp: TButton
+      Left = 544
+      Height = 25
+      Top = 44
+      Width = 25
+      Caption = '^'
+      OnClick = ButtonUpClick
+      TabOrder = 11
+    end
+    object ButtonDown: TButton
+      Left = 544
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = 'v'
+      OnClick = ButtonDownClick
+      TabOrder = 12
+    end
+    object ButtonRight: TButton
+      Left = 576
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = '>'
+      OnClick = ButtonRightClick
+      TabOrder = 13
+    end
+    object ButtonLeft: TButton
+      Left = 512
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = '<'
+      OnClick = ButtonLeftClick
+      TabOrder = 14
+    end
+    object ButtonPlus: TButton
+      Left = 616
+      Height = 25
+      Top = 44
+      Width = 25
+      Caption = '+'
+      OnClick = ButtonPlusClick
+      TabOrder = 15
+    end
+    object ButtonMin: TButton
+      Left = 616
+      Height = 25
+      Top = 73
+      Width = 25
+      Caption = '-'
+      OnClick = ButtonMinClick
+      TabOrder = 16
+    end
+    object EditAlpha: TEdit
+      Left = 448
+      Height = 23
+      Top = 39
+      Width = 40
+      TabOrder = 17
+      Text = '1.1'
+    end
+  end
+end
+>>>>>>> .r233

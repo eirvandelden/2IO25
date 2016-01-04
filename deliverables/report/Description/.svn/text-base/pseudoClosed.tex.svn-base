@@ -1,0 +1,31 @@
+\documentclass[a4paper,twoside,10pt]{article}
+\usepackage{a4wide,graphicx,fancyhdr,clrscode,wrapfig,tabularx,amsmath,amssymb,enumerate}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[pdftex,colorlinks,linkcolor=Black]{hyperref}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{codebox}
+\Procname{$\proc{Closed}(P)$}
+\li $l \gets \proc{SearchLexicographicSmallest}(P)$
+\li $S[0] \gets P[l]$
+\li $P \gets P \setminus \{P[l]\}$
+\li $C \gets \proc{BackTracking}(\emptyset, P, 0, S)$
+\li $n \gets \id{length}[C]$
+\li \If     $C[1].x > C[n].x$
+\li \Then   \For    $i \gets 0$ \To $(\lfloor n/2 \rfloor - 1)$
+\li         \Do     $C[i+1] \leftrightarrow C[n-i]$
+            \End
+\li \Else   \If     $C[1].x = C[n].x$
+\li         \Then   \If     $C[1].y > C[n].y$
+\li                 \Then   \For    $i \gets 0$ \To $(\lfloor n/2 \rfloor - 1)$
+\li                         \Do     $C[i+1] \leftrightarrow C[n-i]$
+                            \End
+                    \End
+            \End
+    \End
+\li \Return $C$
+\end{codebox}
+
+Figure 3: pseudo-code of the Closed-curve algorithm.
+\end{document} 

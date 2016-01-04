@@ -1,0 +1,17 @@
+\documentclass[a4paper,twoside,10pt]{article}
+\usepackage{a4wide,graphicx,fancyhdr,clrscode,wrapfig,tabularx,amsmath,amssymb,enumerate}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[pdftex,colorlinks,linkcolor=Black]{hyperref}
+
+\begin{document}
+\thispagestyle{empty}
+\begin{codebox}
+\Procname{$\proc{Open}(P)$}
+\li $S[0] \gets P[0]$
+\li $P \gets P \setminus \{P[0]\}$
+\li $C \gets \proc{BackTracking}(\emptyset, P, 0, S)$
+\li \Return $C$
+\end{codebox}
+
+Figure 4: pseudo-code of the Open-curve algorithm.
+\end{document} 

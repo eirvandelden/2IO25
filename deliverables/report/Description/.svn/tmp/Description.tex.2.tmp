@@ -1,0 +1,136 @@
+\section{Description of the algorithms}
+\label{sec:Description}
+
+In this section we present the description of the algorithms we have used to find the desired curve for the set of given points.
+Each algorithm is first briefly introduced in natural language and then followed by pseudocode. After the pseudocode, analysis and running time of each algorithm is given.
+
+\subsection{General algorithms and datastructures}
+\label{sub:general}
+<<<<<<< .mine
+We use the Nearest Neighbor Search algorithm (NN Algorithm) to find points closest to the previous and connect both. The NN algorithm is implemented with a $kD-tree$, which takes $O(n)$ to build it and finding a specific point takes $O(n \log n)$.\\
+The pseudocode of the algorithm is given below. 
+=======
+>>>>>>> .r96
+
+Algorithms in this subsection are used by all four subtasks of the curve reconstruction.\\
+In each of the algorithms of the subtasks these procedures are called in the process of reconstruction.\\
+We first use a $kD-tree$ to store the set of given points. The pseudocode of building such a tree is given below.
+
+\begin{codebox}
+\Procname{$\proc{BuildkDTree}(P, d)$}
+\li \If     $\id{length}[P] = 1$
+\li \Then   $leaf \gets P[0]$
+\li         \Return $leaf$
+\li \Else   \For    $i \gets 0$ \To $(\id{length}[P] - 1)$
+\li         \Do     $X[i] \gets P[i].x$
+\li                 $Y[i] \gets P[i].y$
+            \End     
+\li         \If     $d ~ \textbf{mod} ~ 2 = 0$
+\li         \Then   $median \gets \proc{FindMedian}(X)$
+\li                 \For    $i \gets 0$ \To $(\id{length}[P] - 1)$
+\li                 \Do     \If     $P[i].x \leq median$
+\li                         \Then   $S[i] \gets P[i]$
+\li                                 $\proc{BuildkDTree}(S, d+1)$
+\li                         \Else   $B[i] \gets P[i]$
+\li                                 \If     $\id{length}[B] > 0$
+\li                                 \Then   $\proc{BuildkDTree}(B, d+1)$
+                                    \End
+                            \End
+                    \End
+\li         \Else   $median \gets \proc{FindMedian}(Y)$
+\li                 \For    $i \gets 0$ \To $(\id{length}[P] - 1)$
+\li                 \Do     \If     $P[i].y \leq median$
+\li                         \Then   $S[i] \gets P[i]$
+\li                                 $\proc{BuildkDTree}(S, d+1)$
+\li                         \Else   $B[i] \gets P[i]$
+\li                                 \If     $\id{length}[B] > 0$
+\li                                 \Then   $\proc{BuildkDTree}(B, d+1)$
+                                    \End
+                            \End
+                    \End
+            \End     
+    \End
+\end{codebox}
+\noindent $\proc{BuildkDTree}$ builds the tree we need. It does so by alternatively splitting the $x$ or $y$ axis on the middle point of the given points. A node contains this middle point and the median, with it's left tree being the tree with all points that are to the left of the median and vice-versa for it's right child. Then a recursive call is done on both children.\\
+The running time of this algorithm is $O(n)$.
+
+\newpage
+
+\noindent We use the Nearest Neighbor Search Algorithm (NN Algorithm) to find the point that is closest to a given point and the point that is second closest to a given point (this is done by a second call to the algorithm with the same point, but skipping the closest point).\\
+The algorithm uses the earlier-built $kD-Tree$ to find these points. Pseudocode of this algorithm is given below.
+
+\begin{codebox}
+<<<<<<< .mine
+\Procname{$\proc{NNSearch}(p, Tree, d, cNN)$}
+\li \If $d = 0$ {\Comment \color{YellowGreen}The root node}
+\li \Then   \If $p \neq Tree.Node$
+\li         \Then $cNN \gets Tree.Node$ { \Comment \color{YellowGreen}The root node is a better result than the current best} 
+=======
+\Procname{$\proc{NNSearchSub}(p, Tree, d, cNN)$}
+\li \If     $d = 0$ \qquad {\Comment \color{YellowGreen}The root}
+\li \Then   \If     $p \neq Tree.Value$
+\li         \Then   $cNN \gets Tree.Node$ \qquad { \Comment \color{YellowGreen} The root becomes our best result }
+>>>>>>> .r96
+            \End
+<<<<<<< .mine
+\li \Else   \If $(p \neq Tree.Node) \wedge (dist(p, Tree.Node) < dist(p, cNN))$
+\li         \Then $cNN \gets Tree.Node$ { \Comment \color{YellowGreen}The distance between $p$ and the new node is shorter } \\   {\color{YellowGreen}than our current best result}
+=======
+\li \Else   \If     $(p \neq Tree.Value) \wedge (dist(p, Tree.Value) < dist(p, cNN))$
+\li         \Then   $cNN \gets Tree.Value$ \\
+            \qquad\qquad { \Comment \color{YellowGreen} The distance between $p$ and the new node is shorter than our current best result }
+>>>>>>> .r96
+            \End
+    \End
+\li \If     $(d ~ \textbf{mod}~ 2 = 0)$
+\li \Then   $h \gets p.x$ \qquad { \Comment \color{YellowGreen} Node split on X axis }
+\li \Else   $h \gets p.y$ \qquad { \Comment \color{YellowGreen} Node split on Y axis }
+    \End
+\li \If     $dist(p, cNN) \leq dist(h, Tree.Median)$
+\li \Then   \If     $h \leq Tree.Median$
+\li         \Then   $mNN \gets \proc{NNSearch}(p, Tree.Left, d+1, cNN)$
+\li                 \If     $dist(p, mNN) < dist(p, cNN)$  
+\li                 \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+                    \End
+\li         \Else   $mNN \gets \proc{NNSearch}(p, Tree.Right, d+1, cNN)$ 
+\li                 \If     $dist(p, mNN) < dist(p, cNN)$
+\li                 \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+                    \End
+            \End 
+\li \Else   { \Comment \color{YellowGreen} Search left and right in $Tree$ (order doesn't matter)}\\
+\qquad\qquad$mNN \gets \proc{NNSearch}(p, Tree.Random, d+1, cNN)$ 
+\li         \If     $dist(p, mNN) < dist(p, cNN)$
+\li         \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+            \End
+\li         $mNN \gets \proc{NNSearch}(p, Tree.AndereKant, d+1, cNN)$
+\li         \If     $dist(p, mNN) < dist(p, cNN)$
+\li         \Then   $cNN \gets mNN$ \qquad { \Comment \color{YellowGreen} New best result }
+            \End
+    \End
+\li \Return $cNN$
+\end{codebox}
+
+Searching for a specific point in a $kD-tree$ takes $O(n \log n)$.
+
+\subsection{Closed Curve Description} % (fold)
+\label{sub:closed}
+
+\begin{codebox}
+\Procname{$\proc{Closed}(P)$}
+\li $kD \gets$ $\proc{BuildkDTree}(P, 0)$
+\li \For $i \gets 0$ \To $\id{length}[P]$
+\li \Do $NN[i] \gets \proc{NNSearch}(P[i], kD, 0, root[kD])$
+    \End
+\li $Edge1 \gets NN[0]$
+\li $Edge2 \gets NN[1]$
+\li Add Edge 1 and Edge 2 to list of edges
+\li Sort the list of edges, $E$, with $\proc{SortEdges}(E)$
+\end{codebox}
+% subsection closed_curve_problem (end)
+
+\subsection{Open Curve description}
+\label{sub:open}
+
+\subsection{Self-intersecting Curve description}
+\label{sub:self-intersecting}
+\subsection{Up-to-5 Curves description}

@@ -1,0 +1,54 @@
+\subsection{Nearest Neighbor}
+\label{sub:nearest_neighbor}
+
+Our initial approach was to solve the reconstruction of the curve using only  the nearest neighbor property.\\
+We begin with discussing some functions on which our algorithm relies, then we give a description, analysis and test results of the algorithm itself.\\
+
+  \noindent\large\textbf{Lexicographic Smallest}\\
+    We introduce \textit{LexicographicSmallest} to find the lexicographic smallest point in a set of points. This will be the point from which the curve reconstruction starts. Finding this point is needed for all types of curve problems.
+    To find the lexicographic smallest point in a set we go through the array keeping track of the lexicographic smallest point found so far. Because all points are unique, there exists exactly one lexicographic smallest point in the array.\\
+    The running time of this function is $O(n)$, because after each of $n$ points in the array is checked, the lexicographic smallest point is found.\\
+
+  \noindent\large\textbf{Nearest Neighbor}\\
+    Our algorithm assumes the following definition:
+        \begin{definition} \label{def:nn}
+          Given a set $S$ of $n$ input points, the nearest neighbor of a point $p$ is the point $q$ with the smallest distance to $p$ from all points in $S$.
+        \end{definition}
+    \noindent \emph{NearestNeighbor} is initially called with an array $S$ of $n$ points and one empty array $B$ which has the same length.\\
+      From $S$ the lexicographic smallest point is chosen, say $p$. This point $p$ is removed from $A$ and placed into $B$. $p$ is the point from which we start looking for the nearest neighbor. All the lengths between this point and all the remaining points in $A$ are measured and the point with the smallest distance to this point is chosen as to be the nearest neighbor, say $q$.\\
+      Now that the nearest neighbor of $p$ is found, $q$ is moved from $A$ to $B$. Then the nearest neighbor for $q$ is found. This process continues until all points except for the last one in $A$ are processed. This point has no nearest neighbor anymore, so is directly moved from $A$ to $B$. When $A$ is empty and $B$ full, $B$ is returned.
+
+      \begin{center}
+        \begin{tabular}{l l }
+                  & \textbf{NearestNeighbor}$(P)$                                                \\
+              01  & $ls \gets$ \textbf{LexicographicSmallest}$(P)$                               \\
+              02  & $p \gets P[ls]$                                                              \\
+              03  & \textbf{for} $i \gets 0$ \textbf{to} $|P| - 2$ \textbf{do}                   \\
+              04  & \qquad $P \gets P \backslash \{ p \}$                                        \\
+              05  & \qquad $d \gets \infty$                                                      \\
+              06  & \qquad $q \gets p $                                                          \\
+              07  & \qquad \textbf{for} $j \gets 0$ \textbf{to} $|P| - 1$ \textbf{do}            \\
+              08  & \qquad \qquad \textbf{if} \textbf{distance}$(p, P[j]) < d$ \textbf{then}     \\
+              09  & \qquad \qquad ~~ $d \gets$ \textbf{distance}$(p, P[j])$                      \\
+              10  &  \qquad \qquad ~~ $q \gets P[j]$                                             \\
+              11  &  $S \gets S \cup \{ p \}$                                                    \\
+              12  &  $p \gets q$                                                                 \\ \hline
+          & \qquad \qquad \qquad \qquad\textbf{Total } \qquad\qquad $O(n^{2})$
+         \end{tabular}
+         \label{fig:nn_pseudo_code}\\
+         Figure 2.1: Pseudo code for \textit{NearestNeighbor}
+      \end{center}
+
+    \noindent\textbf{Proof of Correctness}\\
+        \textit{To prove:} \textit{NearestNeighbor} finds for each point in the set $S$ its nearest neighbor.\\
+        \textit{NearestNeighbor} begins with removing $p$ from $S$ and calculates the distances between this point $p$ and the other points in $S$ and keeps track of the smallest point processed so far.\\
+        So when all points are processed \textit{NearestNeighbor} has found the nearest of point $p$, say $q$.Then the algorithm computes the nearest neighbor of $q$, say $r$, in the same way as for $p$ and removes $q$ from $S$.\\ Every time the nearest neighbor of a point is found, the found point is removed from $S$.
+        This goes on until the $n-1^{th}$ point is processed; the nearest neighbor of this point is the only point left in set $S$ point $n$. Point $n$ only has a next nearest neighbor in a closed curve problem, namely the starting point. In an open curve problem, it has no new nearest neighbor. \\
+
+    \noindent\textbf{Running Time Analysis}\\
+        Proving the running time for \textit{NearestNeighbor} is straight forward. There are only three lines that are not constant time; lines 1, 3 and 7 in Figure 2.1.\\
+        Line 1 uses a function that searches for the lexicographic smallest for its given input set. This takes $O(n)$ time.\\
+        Line 7 starts a for loop that looks through all remaining elements in the set $P$ looking for the smallest distance between point $j$ and given point $p$. This comparison is done in constant time and does not affect the running time of the for loop. In the first run, this for loop needs to go through the most number of elements, namely $n-1$ elements. The running time of this loop is $O(n)$. \\
+        Line 3 starts the for loop that runs through all elements in the set, minus the last element. Thus, this takes $O(n-1)$. We need to take into account the nested for loop and finding the lexicographic smallest point, this makes the total running time: \\
+        $O(n-1) * O(n) + O(n) =  O(n^{2} - n ) + O(n) = O(n^{2})$ \\
+        Thus \textit{NearestNeighbor} runs in $O(n^{2})$. 

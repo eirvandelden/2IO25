@@ -1,0 +1,7 @@
+\section{Description of the algorithms}
+\label{sec:Description}
+
+\input{1NearestNeighbor/nearestneighbor}
+\input{2DirectedNearestNeighbor/directednearestneighbor}
+\input{3ImprovedNearestNeighbor/improvednearestneighbor}
+\input{4UpToFiveSort/uptofivesort}

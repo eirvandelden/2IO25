@@ -1,0 +1,31 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{graphicx,fancyhdr,clrscode,wrapfig,tabularx,amsmath,amssymb,enumerate,amsthm}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[pdftex,colorlinks,linkcolor=Black]{hyperref}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2cm,nohead]{geometry}
+
+\theoremstyle{definition} \newtheorem{definition}{Definition}
+
+\raggedbottom
+\begin{document}
+
+    \begin{center}
+    {\Large OGO 2.1 fall 2009}\\[0.25cm]
+    {\bf \Huge Curve Reconstruction}\\[0.75cm]
+    \begin{tabular}{p{3cm}p{3cm}p{3cm}p{3cm}p{3cm}}
+    E.I.R. van Delden & T. Hermans & T. van der Hoek & J. Sijen & R. Wolffensperger\\
+    (0618959) & (0664881) & (0655570) & (0652478) & (0612853)
+  \end{tabular}
+    \end{center}
+
+    \begin{abstract}
+      This report is about reconstructing a curve from of a set of given points. We have created three different algorithms to solve the four given problems. \emph{ImprovedNearestNeigbor} is used to solve open and closed curves, \emph{DirectedNearestNeighbor} is used to solve all intersecting curves and \emph{UpToFiveSort} solves curves that consists of two to five, non-intersecting, curves. These algorithms run, respectively, in $O(n^{2}), O(n^{2})$ time, both theoretically and in practice. \emph{UpToFiveSort} theoretically runs in $O(n^{3})$, but in practice in $O(n)$. We have also tested and evaluated each of our algorithms, in which we concluded that we can solve most, but not all, test cases within the given time of 5 minutes.
+    \end{abstract}
+
+\input{Introduction/Introduction}
+\input{Description/Description}
+\input{Discussion/Discussion}
+\input{Remarks/Remarks}
+\input{References/References}
+
+\end{document}

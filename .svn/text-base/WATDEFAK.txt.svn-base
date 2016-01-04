@@ -1,0 +1,16 @@
+Init:
+0,0; 1,1; 2,2; etc allemaal op 3
+de rest op -1
+
+Kies een punt:
+Maak de -1 een 1
+Ga naar rij van dat punt
+Maak van kolom vaar je vandaan komt alle -1 een 2
+
+Geen punten over:
+Ga rij terug, maar van de 1 een 0
+(Van rij x naar y)
+Rij x -> alle 0en naar -1
+Kolom y -> Alle 2en naar -1
+
+

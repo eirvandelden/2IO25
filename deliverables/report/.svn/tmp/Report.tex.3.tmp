@@ -1,0 +1,42 @@
+\documentclass[a4paper,twoside,10pt]{article}
+\usepackage{a4wide,graphicx,fancyhdr,clrscode,wrapfig,tabularx,amsmath,amssymb,enumerate}
+<<<<<<< .mine
+\usepackage[usenames,dvipsnames]{color}
+\usepackage[pdftex,colorlinks,linkcolor=NavyBlue]{hyperref}
+=======
+\usepackage[usenames, dvipsnames]{color}
+\usepackage[pdftex,colorlinks, linkcolor = NavyBlue]{hyperref}
+>>>>>>> .r76
+
+
+\begin{document}
+
+    \begin{titlepage}
+        \begin{center}
+        {\ }\\[5.0cm]
+        {\Large OGO 2.1 fall 2009}\\[0.25cm]
+        {\bf \Huge Curve Reconstruction}\\[0.75cm]
+        \begin{tabular}{p{2.75cm}p{2.75cm}p{2.75cm}p{2.75cm}p{2.75cm}}
+        E.I.R. van Delden & T. Hermans & T. van der Hoek & J. Sijen & R. Wolffensperger\\
+        (0618959) & (0664881) & (0655570) & (0652478) & (0612853)
+        \end{tabular}
+        {\ }\\[14.0cm]
+        {\ Eindhoven, \today }\\[0.2cm]
+        \end{center}
+
+    \end{titlepage}
+
+\thispagestyle{empty}
+{\ }\\
+\newpage
+\tableofcontents
+\newpage
+
+\include{Abstract/Abstract}
+\include{Introduction/Introduction}
+\include{Description/Description}
+\include{Evaluation/Evaluation}
+\include{Remarks/Remarks}
+\include{References/References}
+
+\end{document}

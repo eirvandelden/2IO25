@@ -1,0 +1,83 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TForm1','FORMDATA',[
+<<<<<<< .mine
+  'TPF0'#6'TForm1'#5'Form1'#4'Left'#3#213#0#6'Height'#3#163#2#3'Top'#2#23#5'Wid'
+=======
+  'TPF0'#6'TForm1'#5'Form1'#4'Left'#3#175#2#6'Height'#3#163#2#3'Top'#2'x'#5'Wid'
+>>>>>>> .r373
+  +'th'#3't'#3#13'ActiveControl'#7#6'Panel1'#7'Caption'#6#16'CurveReconDriver'
+  +#12'ClientHeight'#3#163#2#11'ClientWidth'#3't'#3#8'OnCreate'#7#10'FormCreate'
+  +#10'LCLVersion'#6#6'0.9.29'#0#9'TPaintBox'#8'Tekening'#4'Left'#2#0#6'Height'
+  +#3#163#2#3'Top'#2#0#5'Width'#3#163#2#5'Align'#7#8'alClient'#11'OnMouseDown'#7
+  +#17'TekeningMouseDown'#11'OnMouseMove'#7#17'TekeningMouseMove'#9'OnMouseUp'#7
+  +#15'TekeningMouseUp'#12'OnMouseLeave'#7#18'TekeningMouseLeave'#7'OnPaint'#7
+  +#13'TekeningPaint'#0#0#6'TPanel'#6'Panel1'#4'Left'#3#163#2#6'Height'#3#163#2
+  +#3'Top'#2#0#5'Width'#3#209#0#5'Align'#7#7'alRight'#12'ClientHeight'#3#163#2
+  +#11'ClientWidth'#3#209#0#8'TabOrder'#2#0#0#6'TLabel'#8'LabelOOR'#4'Left'#2'`'
+  +#6'Height'#2#29#3'Top'#3#0#1#5'Width'#2#12#7'Caption'#6#1'*'#10'Font.Color'#7
+  +#5'clRed'#11'Font.Height'#2#235#9'Font.Name'#6#4'Sans'#11'ParentColor'#8#10
+  +'ParentFont'#8#7'Visible'#8#0#0#6'TLabel'#11'LabelAantal'#4'Left'#2#11#6'Hei'
+  +'ght'#2#18#3'Top'#3#16#2#5'Width'#2'5'#7'Caption'#6#8'0 points'#11'ParentCol'
+  +'or'#8#0#0#6'TLabel'#7'LabelRT'#4'Left'#2#11#6'Height'#2#18#3'Top'#3'('#2#5
+  +'Width'#2'['#7'Caption'#6#14'Running time: '#11'ParentColor'#8#7'Visible'#8#0
+  +#0#6'TLabel'#6'Label1'#4'Left'#2#8#6'Height'#2#25#3'Top'#2#8#5'Width'#2'<'#7
+  +'Caption'#6#7'Points:'#11'Font.Height'#2#238#9'Font.Name'#6#4'Sans'#10'Font.'
+  +'Style'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#6'La'
+  +'bel2'#4'Left'#2#8#6'Height'#2#25#3'Top'#3#152#0#5'Width'#2'7'#7'Caption'#6#5
+  +'Zoom:'#11'Font.Height'#2#238#9'Font.Name'#6#4'Sans'#10'Font.Style'#11#6'fsB'
+  +'old'#0#11'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#6'Label3'#4'Left'#2
+  +#8#6'Height'#2#25#3'Top'#3'0'#1#5'Width'#2'e'#7'Caption'#6#11'Algorithms:'#11
+  +'Font.Height'#2#238#9'Font.Name'#6#4'Sans'#10'Font.Style'#11#6'fsBold'#0#11
+  +'ParentColor'#8#10'ParentFont'#8#0#0#6'TLabel'#6'Label4'#4'Left'#3#148#0#6'H'
+  +'eight'#2#18#3'Top'#3'P'#1#5'Width'#2#11#7'Caption'#6#2#206#177#11'ParentCol'
+  +'or'#8#0#0#6'TLabel'#6'Label5'#4'Left'#2#8#6'Height'#2#25#3'Top'#3#248#1#5'W'
+  +'idth'#2'V'#7'Caption'#6#9'Overview:'#11'Font.Height'#2#238#9'Font.Name'#6#4
+  +'Sans'#10'Font.Style'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#0#0#6
+  +'TLabel'#6'Label6'#4'Left'#2#8#6'Height'#2#25#3'Top'#3'P'#2#5'Width'#3#152#0
+  +#7'Caption'#6#16'File Management:'#11'Font.Height'#2#238#9'Font.Name'#6#4'Sa'
+  +'ns'#10'Font.Style'#11#6'fsBold'#0#11'ParentColor'#8#10'ParentFont'#8#0#0#7
+  +'TButton'#11'ButtonClear'#4'Left'#2'='#6'Height'#2#23#3'Top'#2'h'#5'Width'#2
+  +'T'#7'Caption'#6#5'Clear'#7'OnClick'#7#16'ButtonClearClick'#8'TabOrder'#2#3#0
+  +#0#7'TButton'#8'ButtonNN'#4'Left'#2#8#6'Height'#2#23#3'Top'#3'h'#1#5'Width'#3
+  +#192#0#7'Caption'#6#16'Nearest Neighbor'#7'Default'#9#7'OnClick'#7#13'Button'
+  +'NNClick'#8'TabOrder'#2#4#0#0#7'TButton'#13'ButtonVoegToe'#4'Left'#2#8#6'Hei'
+  +'ght'#2#23#3'Top'#2'@'#5'Width'#2'T'#7'Caption'#6#3'Add'#7'OnClick'#7#18'But'
+  +'tonVoegToeClick'#8'TabOrder'#2#2#0#0#5'TEdit'#5'EditY'#4'Left'#2'4'#6'Heigh'
+  +'t'#2#22#3'Top'#2'('#5'Width'#2'('#8'TabOrder'#2#1#4'Text'#6#1'0'#0#0#5'TEdi'
+  +'t'#5'EditX'#4'Left'#2#8#6'Height'#2#22#3'Top'#2'('#5'Width'#2'('#8'TabOrder'
+  +#2#0#4'Text'#6#1'0'#0#0#9'TCheckBox'#14'CheckBoxClosed'#4'Left'#2#8#6'Height'
+  +#2#18#3'Top'#3'P'#1#5'Width'#2'h'#7'Caption'#6#12'Closed Curve'#7'Checked'#9
+  +#5'State'#7#9'cbChecked'#8'TabOrder'#2#5#0#0#5'TEdit'#10'EditRandom'#4'Left'
+  +#2't'#6'Height'#2#22#3'Top'#2'('#5'Width'#2'T'#8'TabOrder'#2#6#4'Text'#6#2'1'
+  +'0'#0#0#7'TButton'#12'ButtonRandom'#4'Left'#2't'#6'Height'#2#23#3'Top'#2'@'#5
+  +'Width'#2'T'#7'Caption'#6#6'Random'#7'OnClick'#7#17'ButtonRandomClick'#8'Tab'
+  +'Order'#2#7#0#0#7'TButton'#12'ButtonImport'#4'Left'#2#13#6'Height'#2#23#3'To'
+  +'p'#3'p'#2#5'Width'#2'T'#7'Caption'#6#7'Open...'#7'OnClick'#7#17'ButtonImpor'
+  +'tClick'#8'TabOrder'#2#8#0#0#7'TButton'#9'ButtonFit'#4'Left'#2#8#6'Height'#2
+  +#23#3'Top'#3#0#1#5'Width'#2'T'#7'Caption'#6#8'Zoom Fit'#7'OnClick'#7#14'Butt'
+  +'onFitClick'#8'TabOrder'#2#9#0#0#7'TButton'#9'ButtonDNN'#4'Left'#2#8#6'Heigh'
+  +'t'#2#23#3'Top'#3#136#1#5'Width'#3#192#0#7'Caption'#6#25'Directed Nearest Ne'
+  +'ighbor'#7'OnClick'#7#14'ButtonDNNClick'#8'TabOrder'#2#10#0#0#7'TButton'#8'B'
+  +'uttonUp'#4'Left'#2'+'#6'Height'#2#25#3'Top'#3#184#0#5'Width'#2#26#7'Caption'
+  +#6#1'^'#7'OnClick'#7#13'ButtonUpClick'#8'TabOrder'#2#11#0#0#7'TButton'#10'Bu'
+  +'ttonDown'#4'Left'#2'+'#6'Height'#2#25#3'Top'#3#213#0#5'Width'#2#26#7'Captio'
+  +'n'#6#1'v'#7'OnClick'#7#15'ButtonDownClick'#8'TabOrder'#2#12#0#0#7'TButton'
+  +#11'ButtonRight'#4'Left'#2'P'#6'Height'#2#25#3'Top'#3#213#0#5'Width'#2#25#7
+  +'Caption'#6#1'>'#7'OnClick'#7#16'ButtonRightClick'#8'TabOrder'#2#13#0#0#7'TB'
+  +'utton'#10'ButtonLeft'#4'Left'#2#8#6'Height'#2#25#3'Top'#3#213#0#5'Width'#2
+  +#25#7'Caption'#6#1'<'#7'OnClick'#7#15'ButtonLeftClick'#8'TabOrder'#2#14#0#0#7
+  +'TButton'#10'ButtonPlus'#4'Left'#3#141#0#6'Height'#2#25#3'Top'#3#184#0#5'Wid'
+  +'th'#2#25#7'Caption'#6#1'+'#7'OnClick'#7#15'ButtonPlusClick'#8'TabOrder'#2#15
+  ,#0#0#7'TButton'#9'ButtonMin'#4'Left'#3#141#0#6'Height'#2#25#3'Top'#3#213#0#5
+  +'Width'#2#25#7'Caption'#6#1'-'#7'OnClick'#7#14'ButtonMinClick'#8'TabOrder'#2
+  +#16#0#0#5'TEdit'#9'EditAlpha'#4'Left'#3#160#0#6'Height'#2#22#3'Top'#3'N'#1#5
+  +'Width'#2'('#8'TabOrder'#2#17#4'Text'#6#3'1.1'#0#0#7'TButton'#10'ButtonUP25'
+  +#4'Left'#2#8#6'Height'#2#23#3'Top'#3#200#1#5'Width'#3#192#0#7'Caption'#6#10
+  +'Up To Five'#7'OnClick'#7#15'ButtonUP25Click'#8'TabOrder'#2#18#0#0#7'TButton'
+  +#9'ButtonINN'#4'Left'#2#8#6'Height'#2#23#3'Top'#3#168#1#5'Width'#3#192#0#7'C'
+  +'aption'#6#25'Improved Nearest Neighbor'#7'OnClick'#7#14'ButtonINNClick'#8'T'
+  +'abOrder'#2#19#0#0#7'TButton'#12'ButtonExport'#4'Left'#2't'#6'Height'#2#23#3
+  +'Top'#3'p'#2#5'Width'#2'K'#7'Caption'#6#7'Save...'#7'OnClick'#7#17'ButtonExp'
+  +'ortClick'#8'TabOrder'#2#20#0#0#0#0
+]);
